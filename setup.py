@@ -1,4 +1,4 @@
-"""setup.py file for the ``find_isbns`` package.
+"""setup.py file for the ``organize_ebooks`` package.
 """
 import fnmatch
 import os
@@ -83,7 +83,7 @@ setup(name='organize-ebooks',
       include_package_data=True,
       install_requires=REQUIREMENTS,
       entry_points={
-        'console_scripts': ['organize_ebooks=find_isbns.scripts.organize_ebooks:main']
+        'console_scripts': ['organize_ebooks=organize_ebooks.scripts.organize_ebooks:main']
       },
       project_urls={  # Optional
           'Bug Reports': 'https://github.com/raul23/organize-ebooks/issues',
