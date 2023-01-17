@@ -66,9 +66,13 @@ Personal notes
 ==============
 - Having multiple metadata sources can slow down the ebooks organization. 
 
-  - By default, we have for ``metadata-fetch-order``: ``['Goodreads', 'Amazon.com', 'Google', 'ISBNDB', 'WorldCat xISBN', 'OZON.ru']``
+  - By default, we have for ``metadata-fetch-order``:: 
   
-  - By default, we have for ``organize-without-isbn-sources``: ``['Goodreads', 'Amazon.com', 'Google']``
+     ['Goodreads', 'Amazon.com', 'Google', 'ISBNDB', 'WorldCat xISBN', 'OZON.ru']
+  
+  - By default, we have for ``organize-without-isbn-sources``::
+     
+     ['Goodreads', 'Amazon.com', 'Google']
   
   I usually get results from ``Google`` and ``Goodreads`` and sometimes ``Amazon.com``.
 
