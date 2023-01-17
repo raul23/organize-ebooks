@@ -61,3 +61,7 @@ TODO
 Through the API
 """""""""""""""
 TODO
+
+Personal notes
+==============
+- Having multiple metadata sources can slow down the ebooks organization. By default, we have: ``['Goodreads', 'Amazon.com', 'Google', 'ISBNDB', 'WorldCat xISBN', 'OZON.ru']``
