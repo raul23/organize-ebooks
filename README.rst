@@ -79,7 +79,7 @@ Personal notes
 - Books that are sometimes **skipped** for insufficient information from filename\\ISBN or wrong filename\\ISBN
 
   - Solution manuals
-  - Obscure books
+  - Obscure and/or non-english books
   - PhD thesis
 
 - ``pdfinfo`` can be too sensitive sometimes by labeling PDF books as corrupted even though they can be opened without problems::
