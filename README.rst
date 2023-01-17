@@ -80,6 +80,10 @@ TODOs and personal notes
 
   - Solution manuals
   - Obscure and/or non-english books
+  - Very old books without any ISBN
+  - Book with an invalid ISBN: so far I only found one book with an invalid ISBN that was assigned to it
+  - Books with ISBNs but they couldn't extracted because the conversion to text (with or without OCR) was not cleaned, i.e.
+    it added extra characters such as '·' or '\uf73' between the numbers of the ISBN which "broke" the regex
   - PhD thesis
 
   Obviously, they are skipped if I didn't enable OCR with the option ``--ocr-enabled`` (by default it is set to False)
