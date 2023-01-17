@@ -88,5 +88,5 @@ Personal notes
    Syntax Error: Couldn't find trailer dictionary
    
   TODO: ignore these errors and continue processing the pdf file
-
-
+  
+- Maybe skip archives (e.g. ``zip`` and ``7z``) by default? Can really slow down everything since each decompressed file is analyzed for ISBNs.
