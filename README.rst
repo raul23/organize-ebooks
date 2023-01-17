@@ -68,3 +68,6 @@ Personal notes
 
   By default, we have: ``['Goodreads', 'Amazon.com', 'Google', 'ISBNDB', 'WorldCat xISBN', 'OZON.ru']``
 
+  I Usually get results from ``Google`` and ``Goodreads`` and sometimes ``Amazon.com``.
+
+- TODO
