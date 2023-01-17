@@ -86,3 +86,7 @@ Personal notes
 
    Syntax Error: Dictionary key must be a name object
    Syntax Error: Couldn't find trailer dictionary
+   
+  TODO: ignore these errors and continue processing the pdf file
+
+
