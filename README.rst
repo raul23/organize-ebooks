@@ -82,6 +82,8 @@ TODOs and personal notes
   - Obscure and/or non-english books
   - PhD thesis
 
+  Obviously, they are skipped if I didn't enable OCR with the option ``--ocr-enabled`` (by default it is set to False)
+
 - ``pdfinfo`` can be too sensitive sometimes by labeling PDF books as corrupted even though they can be opened without problems::
 
    Syntax Error: Dictionary key must be a name object
