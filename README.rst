@@ -81,3 +81,8 @@ Personal notes
   - Solution manuals
   - Obscure books
   - PhD thesis
+
+- ``pdfinfo`` can be too sensitive sometimes by labeling PDF books as corrupted even though they can be opened without problems::
+
+   Syntax Error: Dictionary key must be a name object
+   Syntax Error: Couldn't find trailer dictionary
