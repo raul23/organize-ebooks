@@ -74,6 +74,6 @@ Personal notes
      
      ['Goodreads', 'Amazon.com', 'Google']
   
-  I usually get results from ``Google`` and ``Goodreads``. Thus change the order of both lists [TODO]
+  I usually get results from ``Google`` and ``Goodreads``. Thus change the default order of both lists [TODO]
 
 - ...
