@@ -76,7 +76,7 @@ Personal notes
   
   I usually get results from ``Google`` and ``Goodreads``. Thus need to change the default order of both lists [TODO]
 
-- Books that are sometimes **skipped** for insufficient information from or wrong: filename\ISBN
+- Books that are sometimes **skipped** for insufficient information from or wrong: filename\\ISBN
 
   - Solution manuals
   - Obscure books
