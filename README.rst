@@ -74,6 +74,6 @@ Personal notes
      
      ['Goodreads', 'Amazon.com', 'Google']
   
-  I usually get results from ``Google`` and ``Goodreads`` and sometimes ``Amazon.com``.
+  I usually get results from ``Google`` and ``Goodreads``.
 
 - TODO
