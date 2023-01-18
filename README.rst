@@ -81,8 +81,9 @@ TODOs and personal notes
   - Solution manuals
   - Obscure and/or non-english books
   - Very old books without any ISBN
+  - A book with an invalid ISBN from the get go: only found one such book so far (a French book about analysis)
   - Books with an invalid ISBN because when converting them to text for extracting their ISBNs, an extra number was added to 
-    the ISBN which made it invalid
+    the ISBN (and not at the end but in the middle of it) which made it invalid
     
     For the moment, I don't know what to do about this case
   - Books with ISBNs but they couldn't be extracted because the conversion to text (with or without OCR) was not cleaned, i.e.
