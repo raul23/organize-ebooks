@@ -92,7 +92,7 @@ TODOs and personal notes
     Solution: I had to modify ``find_isbns()`` to take into account these annoying "artifacts" from the conversion procedure
   - PhD thesis
 
-  Obviously, they are skipped if I didn't enable OCR with the option ``--ocr-enabled`` (by default it is set to False)
+  Obviously, they are skipped if I didn't enable OCR with the option ``--ocr-enabled`` (by default it is set to 'false')
 
 - ``pdfinfo`` can be too sensitive sometimes by labeling PDF books as corrupted even though they can be opened without problems::
 
