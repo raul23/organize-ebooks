@@ -65,13 +65,10 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
 
 TODO
 
-Examples
-========
-Organize a collection of assorted documents
--------------------------------------------
-
+Example: organize a collection of assorted documents
+====================================================
 Through the script ``organize_ebooks.py``
-"""""""""""""""""""""""""""""""""""""""""
+-----------------------------------------
 To organize a collection of documents (ebooks, pamplets) through the script ``organize_ebooks.py``::
 
  python organize.py ~/Data/test/input_folder/ -o ~/ebooks/output_folder --ofp ~/ebooks/pamphlets/
@@ -83,7 +80,7 @@ To organize a collection of documents (ebooks, pamplets) through the script ``or
 - Also books made up with images will be skipped since OCR was not choosen.
 
 Through the API
-"""""""""""""""
+---------------
 To organize a collection of documents (ebooks, pamplets) through the API: 
 
 .. code-block:: python
