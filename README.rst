@@ -30,8 +30,44 @@ This is the environment on which the script `organize_ebooks.py <./organize_eboo
 
 * **Platform:** macOS
 * **Python**: version **3.7**
+* `Tesseract <https://github.com/tesseract-ocr/tesseract>`_ for running OCR on books - version 4 gives 
+  better results. 
+  
+  `:warning:` OCR is a slow resource-intensive process. Hence, by default only the first 7 and last 3 pages are OCRed through the option
+  ``--ocr-only-first-last-pages``. More info at `Script options <#script-options>`_.
+* `Ghostscript <https://www.ghostscript.com/>`_: ``gs`` converts *pdf* to *png* (useful for OCR)
+* `DjVuLibre <http://djvu.sourceforge.net/>`_: 
 
-TODO
+  - it includes ``ddjvu`` for converting *djvu* to *tif* image (useful for OCR), and ``djvused`` to get number of pages from a *djvu* document
+  - it includes ``djvutxt`` for converting *djvu* to *txt*
+  
+    `:warning:` 
+  
+    - To access the *djvu* command line utilities and their documentation, you must set the shell variable ``PATH`` and ``MANPATH`` appropriately. 
+      This can be achieved by invoking a convenient shell script hidden inside the application bundle::
+  
+       $ eval `/Applications/DjView.app/Contents/setpath.sh`
+   
+      **Ref.:** ReadMe from DjVuLibre
+    - You need to softlink ``djvutxt`` in ``/user/local/bin`` (or add it in ``$PATH``)
+* `poppler <https://poppler.freedesktop.org/>`_: 
+
+  - it includes ``pdftotext`` for converting *pdf* to *txt*
+  - it includes ``pdfinfo`` to get number of pages from a *pdf* document if `mdls (macOS) <https://ss64.com/osx/mdls.html>`_ is not found.
+
+`:information_source:` *epub* is converted to *txt* by using ``unzip -c {input_file}``
+
+|
+
+**Optionally:**
+
+- `calibre <https://calibre-ebook.com/>`_: 
+
+  - for converting {*pdf*, *djvu*, *epub*, *msword*} to *txt* by using calibre's 
+    `ebook-convert <https://manual.calibre-ebook.com/generated/en/ebook-convert.html>`_
+  
+    `:warning:` ``ebook-convert`` is slower than the other conversion tools (``textutil``, ``catdoc``, ``pdftotext``, ``djvutxt``)
+  - for getting an ebook's metadata with ``ebook-meta`` in order to search it for ISBNs
 
 Installation
 ============
