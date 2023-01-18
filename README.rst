@@ -226,7 +226,7 @@ To organize a collection of documents (ebooks, pamplets) through the API:
 
 By default when using the API, the loggers are disabled. If you want to enable them, call the
 function ``setup_log()`` (with the desired log level in all caps) at the beginning of your code before 
-the conversion function ``convert()``:
+the function ``organize()``:
 
 .. code-block:: python
 
@@ -243,6 +243,8 @@ the conversion function ``convert()``:
                                 keep_metadata=True)
 
 Sample output::
+
+ 
 
 TODOs and notes
 ===============
