@@ -99,6 +99,6 @@ TODOs and personal notes
    Syntax Error: Dictionary key must be a name object
    Syntax Error: Couldn't find trailer dictionary
    
-  TODO: ignore these errors and continue processing the pdf file
+  TODO: ignore these errors and continue processing the PDF file
   
 - Maybe skip archives (e.g. ``zip`` and ``7z``) by default? Can really slow down everything since each decompressed file is analyzed for ISBNs. [TODO]
