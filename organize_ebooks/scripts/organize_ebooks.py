@@ -13,7 +13,7 @@ import logging
 import os
 
 from organize_ebooks import __version__, lib
-from lib import namespace_to_dict, organizer, setup_log, blue, green, red, yellow
+from organize_ebooks.lib import namespace_to_dict, organizer, setup_log, blue, green, red, yellow
 
 # import ipdb
 
