@@ -178,7 +178,6 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
     --ofc, --output-folder-corrupt PATH             If specified, corrupt files will be moved to this folder. (default: None)
     --ofp, --output-folder-pamphlets PATH           If specified, pamphlets will be moved to this folder. (default: None)
 
-
 Example: organize a collection of assorted documents
 ====================================================
 Through the script ``organize_ebooks.py``
