@@ -75,9 +75,9 @@ To organize a collection of documents (ebooks, pamplets) through the script ``or
  
 `:information_source:` Explaining the command
 
-- You only specify the input and two ouput folders and thus ignore corrupted files and ebooks without ISBNs.
-  These ignored files will just be skipped.
-- Also books made up with images will be skipped since OCR was not choosen.
+- You only specify the input and two ouput folders and thus ignore corrupted files (``--ofu`` not used) and 
+  ebooks without ISBNs (``--ofu`` and ``--owi`` not used). These ignored files will just be skipped.
+- Also books made up with images will be skipped since OCR was not choosen (``--ocr`` is set to 'false' by default).
 
 Through the API
 ---------------
