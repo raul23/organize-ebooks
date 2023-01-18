@@ -81,9 +81,12 @@ TODOs and personal notes
   - Solution manuals
   - Obscure and/or non-english books
   - Very old books without any ISBN
-  - Book with an invalid ISBN: so far I only found one book with an invalid ISBN that was assigned to it
+  - Books with an invalid ISBN because when converting them to text for extracting their ISBNs, an extra number was added to 
+    the ISBN which made it invalid
+    
+    For the moment, I don't know what to do about this case
   - Books with ISBNs but they couldn't be extracted because the conversion to text (with or without OCR) was not cleaned, i.e.
-    it added extra characters such as '·' or '\uf73' between the numbers of the ISBN which "broke" the regex
+    it added extra characters (not necessarily numbers) such as '·' or '\uf73' between the numbers of the ISBN which "broke" the regex
     
     Solution: I had to modify ``find_isbns()`` to take into account these annoying "artifacts" from the conversion procedure
   - PhD thesis
