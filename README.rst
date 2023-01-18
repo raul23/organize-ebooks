@@ -35,11 +35,27 @@ TODO
 
 Installation
 ============
-TODO
+To install the `organize_ebooks <./organize_ebooks/>`_ package::
+
+ $ pip install git+https://github.com/raul23/organize-ebooks#egg=organize-ebooks
+ 
+**Test installation**
+
+1. Test your installation by importing ``organize_ebooks`` and printing its
+   version::
+
+   $ python -c "import organize_ebooks; print(organize_ebooks.__version__)"
+
+2. You can also test that you have access to the ``organize_ebooks.py`` script by
+   showing the program's version::
+
+   $ organize_ebooks --version
 
 Uninstall
 =========
-TODO
+To uninstall the `organize_ebooks <./organize_ebooks/>`_ package::
+
+ $ pip uninstall organize_ebooks
 
 Script options
 ==============
