@@ -203,7 +203,7 @@ Let's say we have this folder containing assorted documents:
 
 |
 
-To organize this collection of documents (ebooks, pamplets) through the API: 
+To organize this collection of documents (ebooks, pamphlets) through the API: 
 
 .. code-block:: python
 
