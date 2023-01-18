@@ -71,7 +71,7 @@ Through the script ``organize_ebooks.py``
 -----------------------------------------
 To organize a collection of documents (ebooks, pamplets) through the script ``organize_ebooks.py``::
 
- organize ~/Data/test/input_folder/ -o ~/ebooks/output_folder --ofp ~/ebooks/pamphlets/
+ organize ~/ebooks/input_folder/ -o ~/ebooks/output_folder --ofp ~/ebooks/pamphlets/
  
 `:information_source:` Explaining the command
 
@@ -87,7 +87,7 @@ To organize a collection of documents (ebooks, pamplets) through the API:
 
    from organize_ebooks.lib import organizer
 
-   retcode = organizer.organize('/Users/test/Data/test/input_folder/',
+   retcode = organizer.organize('/Users/test/ebooks/input_folder/',
                                 output_folder='/Users/test/ebooks/output_folder',
                                 output_folder_corrupt='/Users/test/ebooks/corrupt/',
                                 output_folder_pamphlets='/Users/test/ebooks/pamphlets/',
