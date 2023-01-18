@@ -250,6 +250,15 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
     --ofc, --output-folder-corrupt PATH             If specified, corrupt files will be moved to this folder. (default: None)
     --ofp, --output-folder-pamphlets PATH           If specified, pamphlets will be moved to this folder. (default: None)
 
+Script usage
+============
+At bare minimum, the script ``organize_ebooks`` requires an input folder containing the ebooks to organize. Thus, the following is the
+shortest command you can provide to the script::
+
+ $ organize ~/ebooks/input_folder/
+ 
+The ebooks in the input folder will be searched for ISBNs. TODO
+
 Example: organize a collection of assorted documents
 ====================================================
 Through the script ``organize_ebooks.py``
