@@ -89,7 +89,7 @@ ISBN_REORDER_FILES = [400, 50]
 ISBN_RET_SEPARATOR = ' - '
 # NOTE: If you use Calibre versions that are older than 2.84, it's required to
 # manually set the following option to an empty string
-ISBN_METADATA_FETCH_ORDER = ['Goodreads', 'Amazon.com', 'Google', 'ISBNDB', 'WorldCat xISBN', 'OZON.ru']
+ISBN_METADATA_FETCH_ORDER = ['Goodreads', 'Google', 'Amazon.com', 'ISBNDB', 'WorldCat xISBN', 'OZON.ru']
 
 # Logging options
 # ===============
@@ -106,7 +106,7 @@ OCR_ONLY_FIRST_LAST_PAGES = (7, 3)
 # ================
 CORRUPTION_CHECK_ONLY = False
 ORGANIZE_WITHOUT_ISBN = False
-ORGANIZE_WITHOUT_ISBN_SOURCES = ['Goodreads', 'Amazon.com', 'Google']
+ORGANIZE_WITHOUT_ISBN_SOURCES = ['Goodreads', 'Google', 'Amazon.com']
 PAMPHLET_EXCLUDED_FILES = '\.(chm|epub|cbr|cbz|mobi|lit|pdb)$'
 PAMPHLET_INCLUDED_FILES = '\.(png|jpg|jpeg|gif|bmp|svg|csv|pptx?)$'
 PAMPHLET_MAX_FILESIZE_KIB = 250
@@ -1747,14 +1747,16 @@ class OrganizeEbooks:
 
     # TODO: important, do the same for others
     def _update(self, **kwargs):
-        logger.debug('Updating attributes for organize...')
+        logger.debug('Updating attributes for organizer...')
+        if self.output_folder != os.getcwd():
+            logger.debug(f'output_folder: {os.getcwd()} [cwd] -> {self.output_folder}')
         for k, v in self.__dict__.items():
             new_val = kwargs.get(k)
             if new_val and v != new_val:
                 logger.debug(f'{k}: {v} -> {new_val}')
                 self.__setattr__(k, new_val)
 
-    def organize(self, folder_to_organize, **kwargs):
+    def organize(self, folder_to_organize, output_folder=os.getcwd(), **kwargs):
         # TODO: important, factorize (other places, e.g. rename)
         # TODO: important, add red color to error message (other places too)
         if folder_to_organize is None:
@@ -1763,8 +1765,9 @@ class OrganizeEbooks:
         if not Path(folder_to_organize).exists():
             logger.error(red(f"Input folder doesn't exist: {folder_to_organize}"))
             return 1
-        self._update(**kwargs)
         self.folder_to_organize = folder_to_organize
+        self.output_folder = output_folder
+        self._update(**kwargs)
         files = []
         # TODO: important, other places too
         if is_dir_empty(folder_to_organize):
