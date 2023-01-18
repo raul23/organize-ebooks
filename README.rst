@@ -106,7 +106,6 @@ TODOs and personal notes
     it added extra characters (not necessarily numbers) such as '·' or '\uf73' between the numbers of the ISBN which "broke" the regex
     
     Solution: I had to modify ``find_isbns()`` to take into account these annoying "artifacts" from the conversion procedure
-  - PhD thesis
 
   Obviously, they are skipped if I didn't enable OCR with the option ``--ocr-enabled`` (by default it is set to 'false')
 
