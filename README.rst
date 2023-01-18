@@ -258,7 +258,7 @@ TODOs and notes
      
      ['Goodreads', 'Amazon.com', 'Google']
   
-  I usually get results from ``Google`` and ``Goodreads``. Thus need to change the default order of both lists [TODO]
+  I usually get results from ``Google`` and ``Goodreads``.
 
 - Books that are sometimes **skipped** for insufficient information from filename\\ISBN or wrong filename\\ISBN
 
