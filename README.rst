@@ -78,8 +78,8 @@ Through the API
 """""""""""""""
 TODO
 
-TODOs and personal notes
-========================
+TODOs and notes
+===============
 - Having multiple metadata sources can slow down the ebooks organization. 
 
   - By default, we have for ``metadata-fetch-order``:: 
