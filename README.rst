@@ -231,7 +231,7 @@ To organize this collection of documents (ebooks, pamphlets) through the API:
 - ``organize_without_isbn``: If True, this flag specifies to fetch metadata from online sources in case no ISBN could be found in ebooks.
 - ``keep_metadata``: If True, a metadata file will be saved along the renamed ebooks in the output folder. Also, documents that were
   identified as corrupted will be saved along with a metadata file that will contain info about the detected corruption.
-- If everything went well with the organization of documents, ``organize()`` will return 0 (success). Otherweise, ``retcode`` will be 1 (failure).
+- If everything went well with the organization of documents, ``organize()`` will return 0 (success). Otherwise, ``retcode`` will be 1 (failure).
 
 Sample output:
 
