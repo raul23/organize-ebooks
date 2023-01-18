@@ -30,12 +30,18 @@ This is the environment on which the script `organize_ebooks.py <./organize_eboo
 
 * **Platform:** macOS
 * **Python**: version **3.7**
+* `p7zip <https://sourceforge.net/projects/p7zip/>`_ for ISBN searching in ebooks that are in archives.
 * `Tesseract <https://github.com/tesseract-ocr/tesseract>`_ for running OCR on books - version 4 gives 
   better results. 
   
   `:warning:` OCR is a slow resource-intensive process. Hence, by default only the first 7 and last 3 pages are OCRed through the option
   ``--ocr-only-first-last-pages``. More info at `Script options <#script-options>`_.
 * `Ghostscript <https://www.ghostscript.com/>`_: ``gs`` converts *pdf* to *png* (useful for OCR)
+* `textutil <https://ss64.com/osx/textutil.html>`_ or `catdoc <http://www.wagner.pp.ru/~vitus/software/catdoc/>`_: for converting *doc* to *txt*
+
+  **NOTE:** On macOS, you don't need ``catdoc`` since it has the built-in ``textutil``
+  command-line tool that converts any *txt*, *html*, *rtf*, 
+  *rtfd*, *doc*, *docx*, *wordml*, *odt*, or *webarchive* file
 * `DjVuLibre <http://djvu.sourceforge.net/>`_: 
 
   - it includes ``ddjvu`` for converting *djvu* to *tif* image (useful for OCR), and ``djvused`` to get number of pages from a *djvu* document
@@ -63,11 +69,41 @@ This is the environment on which the script `organize_ebooks.py <./organize_eboo
 
 - `calibre <https://calibre-ebook.com/>`_: 
 
-  - for converting {*pdf*, *djvu*, *epub*, *msword*} to *txt* by using calibre's 
+  - Versions **2.84** and above are preferred because of their ability to manually specify from which
+    specific online source we want to fetch metadata. For earlier versions you have to set 
+    ``ISBN_METADATA_FETCH_ORDER`` and ``ORGANIZE_WITHOUT_ISBN_SOURCES`` to empty strings.
+
+  - for fetching metadata from online sources
+  
+  - for getting an ebook's metadata with ``ebook-meta`` in order to search it for ISBNs
+
+  - for converting {*pdf*, *djvu*, *epub*, *msword*} to *txt* (for ISBN searching) by using calibre's 
     `ebook-convert <https://manual.calibre-ebook.com/generated/en/ebook-convert.html>`_
   
     `:warning:` ``ebook-convert`` is slower than the other conversion tools (``textutil``, ``catdoc``, ``pdftotext``, ``djvutxt``)
-  - for getting an ebook's metadata with ``ebook-meta`` in order to search it for ISBNs
+
+- **Optionally** `poppler <https://poppler.freedesktop.org/>`_, `catdoc <http://www.wagner.pp.ru/~vitus/software/catdoc/>`_ 
+  and `DjVuLibre <http://djvu.sourceforge.net/>`_ can be installed for **faster** than calibre's conversion of ``.pdf``, ``.doc`` and ``.djvu`` files
+  respectively to ``.txt``.
+
+- **Optionally** the `Goodreads <https://www.mobileread.com/forums/showthread.php?t=130638>`_ and 
+  `WorldCat xISBN <https://github.com/na--/calibre-worldcat-xisbn-metadata-plugin>`_ calibre plugins can be installed for better metadata fetching.
+
+|
+
+`:star:`
+
+  If you only install **calibre** among these dependencies, you can still have
+  a functioning program that will organize ebook collections: 
+  
+  * fetching metadata from online sources will work: by `default 
+    <https://manual.calibre-ebook.com/generated/en/fetch-ebook-metadata.html#
+    cmdoption-fetch-ebook-metadata-allowed-plugin>`__
+    **calibre** comes with Amazon and Google sources among others
+  * conversion to *txt* will work: `calibre`'s own ``ebook-convert`` tool
+    will be used
+    
+  However, accuracy and performance will be affected as explained in the list of dependencies above.
 
 Installation
 ============
