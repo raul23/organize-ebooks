@@ -194,7 +194,16 @@ To organize a collection of documents (ebooks, pamplets) through the script ``or
 
 Through the API
 ---------------
-To organize a collection of documents (ebooks, pamplets) through the API: 
+Let's say we have this folder containing assorted documents:
+
+.. image:: ./images/input_folder.png
+   :target: ./images/input_folder.png
+   :align: left
+   :alt: Example: documents to organize
+
+|
+
+To organize this collection of documents (ebooks, pamplets) through the API: 
 
 .. code-block:: python
 
@@ -224,6 +233,38 @@ To organize a collection of documents (ebooks, pamplets) through the API:
   identified as corrupted will be saved along with a metadata file that will contain info about the detected corruption.
 - If everything went well with the organization of documents, ``organize()`` will return 0 (success). Otherweise, ``retcode`` will be 1 (failure).
 
+Sample output:
+
+.. image:: ./images/script_output.png
+   :target: ./images/script_output.png
+   :align: left
+   :alt: Example: output terminal
+
+|
+
+Contents of the different folders after the organization:
+
+.. image:: ./images/output_folder.png
+   :target: ./images/output_folder.png
+   :align: left
+   :alt: Example: output folder
+
+|
+
+.. image:: ./images/pamphlets.png
+   :target: ./images/pamphlets.png
+   :align: left
+   :alt: Example: pamphlets folder
+
+|
+
+.. image:: ./images/uncertain.png
+   :target: ./images/uncertain.png
+   :align: left
+   :alt: Example: uncertain folder
+
+|
+
 By default when using the API, the loggers are disabled. If you want to enable them, call the
 function ``setup_log()`` (with the desired log level in all caps) at the beginning of your code before 
 the function ``organize()``:
@@ -242,10 +283,13 @@ the function ``organize()``:
                                 organize_without_isbn=True,
                                 keep_metadata=True)
 
-Sample output::
+Sample output:
 
+.. image:: ./images/script_output_debug.png
+   :target: ./images/script_output_debug.png
+   :align: left
+   :alt: Example: output terminal with debug messages
  
-
 TODOs and notes
 ===============
 - Having multiple metadata sources can slow down the ebooks organization. 
