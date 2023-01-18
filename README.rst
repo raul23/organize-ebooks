@@ -86,7 +86,7 @@ TODOs and personal notes
     the ISBN (and not at the end but in the middle of it) which made it invalid
     
     For the moment, I don't know what to do about this case
-  - Books with ISBNs but they couldn't be extracted because the conversion to text (with or without OCR) was not cleaned, i.e.
+  - Books whose ISBNs couldn't be extracted because the conversion to text (with or without OCR) was not cleaned, i.e.
     it added extra characters (not necessarily numbers) such as '·' or '\uf73' between the numbers of the ISBN which "broke" the regex
     
     Solution: I had to modify ``find_isbns()`` to take into account these annoying "artifacts" from the conversion procedure
