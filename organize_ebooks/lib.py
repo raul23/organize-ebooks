@@ -1691,7 +1691,8 @@ class OrganizeEbooks:
                                  f'Non-ISBN organization disabled')
 
     def _organize_file(self, file_path):
-        logger.info(f'Processing [{Path(file_path).suffix}] {Path(file_path).name[:100]}...')
+        suffix = f' [{Path(file_path).suffix}] ' if len(Path(file_path).name) > 145 else ' '
+        logger.info(f'Processing{suffix}{Path(file_path).name[:100]}...')
         file_err = check_file_for_corruption(file_path,
                                              self.tested_archive_extensions)
         if file_err:
