@@ -222,6 +222,27 @@ To organize a collection of documents (ebooks, pamplets) through the API:
 - ``organize_without_isbn``: If True, this flag specifies to fetch metadata from online sources in case no ISBN could be found in ebooks.
 - ``keep_metadata``: If True, a metadata file will be saved along the renamed ebooks in the output folder. Also, documents that were
   identified as corrupted will be saved along with a metadata file that will contain info about the detected corruption.
+- If everything went well with the organization of documents, ``organize()`` will return 0 (success). Otherweise, ``retcode`` will be 1 (failure).
+
+By default when using the API, the loggers are disabled. If you want to enable them, call the
+function ``setup_log()`` (with the desired log level in all caps) at the beginning of your code before 
+the conversion function ``convert()``:
+
+.. code-block:: python
+
+
+   from organize_ebooks.lib import organizer, setup_log
+
+   setup_log(logging_level='INFO')
+   retcode = organizer.organize('/Users/test/ebooks/input_folder/',
+                                output_folder='/Users/test/ebooks/output_folder',
+                                output_folder_corrupt='/Users/test/ebooks/corrupt/',
+                                output_folder_pamphlets='/Users/test/ebooks/pamphlets/',
+                                output_folder_uncertain='/Users/test/ebooks/uncertain/',
+                                organize_without_isbn=True,
+                                keep_metadata=True)
+
+Sample output::
 
 TODOs and notes
 ===============
