@@ -67,16 +67,51 @@ TODO
 
 Examples
 ========
-Organize a collection of ebooks
--------------------------------
+Organize a collection of assorted documents
+-------------------------------------------
 
 Through the script ``organize_ebooks.py``
 """""""""""""""""""""""""""""""""""""""""
-TODO
+To organize a collection of documents (ebooks, pamplets) through the script ``organize_ebooks.py``::
+
+ python organize.py ~/Data/test/input_folder/ -o ~/ebooks/output_folder --ofp ~/ebooks/pamphlets/
+ 
+`:information_source:` Explaining the command
+
+- You only specify the input and two ouput folders and thus ignore corrupted files and ebooks without ISBNs.
+  These ignored files will just be skipped.
+- Also books made up with images will be skipped since OCR was not choosen.
 
 Through the API
 """""""""""""""
-TODO
+To organize a collection of documents (ebooks, pamplets) through the API: 
+
+.. code-block:: python
+
+   from organize_ebooks.lib import organizer
+
+   retcode = organizer.organize('/Users/test/Data/test/input_folder/',
+                                output_folder='/Users/test/ebooks/output_folder',
+                                output_folder_corrupt='/Users/test/ebooks/corrupt/',
+                                output_folder_pamphlets='/Users/test/ebooks/pamphlets/',
+                                output_folder_uncertain='/Users/test/ebooks/uncertain/',
+                                organize_without_isbn=True,
+                                keep_metadata=True)
+
+`:information_source:` Explaining the parameters of the function ``organize()``
+
+- The first parameter to ``organize()`` is the input folder containing the documents to organize
+- ``output_folder``: this is the folder where every ebooks whose ISBNs could be retrieved will be saved and renamed with proper names. 
+  Thus the program is highly confident that these ebooks are correctly labeled based on the found ISBNs.
+- ``output_folder_corrupt``: any document that was checked (with ``pdfinfo``) and found to be corrupted will be saved in this folder.
+- ``output_folder_pamphlets``: this is the folder that will contain any documents without valid ISBNs (e.g. HMTL pages) that satisfy certain 
+  criteria for pamphlets (such as small size and low number of pages).
+- ``output_folder_uncertain``: this folder will contain any documents that could be identified based on non-ISBN metadata (e.g. title) 
+  from online sources (e.g. Goodreads). However this folder is only used if the flag ``organize_without_isbn`` (next option explained) 
+  is set to True.
+- ``organize_without_isbn``: If True, this flag specifies to fetch metadata from online sources in case no ISBN could be found in ebooks.
+- ``keep_metadata``: If True, a metadata file will be saved along the renamed ebooks in the output folder. Also, documents that were
+  identified as corrupted will be saved along with a metadata file that will contain info about the detected corruption.
 
 TODOs and notes
 ===============
