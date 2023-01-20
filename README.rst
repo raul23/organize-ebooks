@@ -438,7 +438,7 @@ Notes
   getting the error ``requested access to the resource is denied``. 
 
 Docker error: ``requested access to the resource is denied``
-------------------------------------------------------------
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 `:information_source:` If you are having trouble pushing your docker image to hub.docker.com with an old macOS
 
   I was trying to push to hub.docker.com but I was getting the error ``requested access to the resource is denied``. 
