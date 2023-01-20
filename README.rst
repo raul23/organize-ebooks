@@ -448,7 +448,7 @@ Docker error: ``requested access to the resource is denied``
 
   I was finally able to push the Docker image to hub.docker.com by installing Ubuntu 22.04 in a virtual machine since I was
   finally convinced that my very old macOS wasn't compatible with Docker anymore. Also my Docker version was way too old
-  and the latest Docker requires newer versions of macOS. The only ``docker`` operation I was not able to accomplish
+  and the latest Docker requires newer versions of macOS. The only ``docker`` operation I was not able to accomplish (as far as I know)
   with my old macOS was ``docker push``.
 
   **SOLUTION:** thus the solution if you tried everything under the sun to try fixing the ``push`` problem is to finally accept that your 
