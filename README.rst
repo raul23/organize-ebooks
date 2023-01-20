@@ -105,36 +105,12 @@ This is the environment on which the script `organize_ebooks.py <./organize_eboo
     
   However, accuracy and performance will be affected as explained in the list of dependencies above.
 
-Installing the development version with ``pip``
-===============================================
-Install
--------
-To install thedevelopment version (i.e. bleeding-edge version with the latest features but not ready yet for wide release) 
-of the package `organize_ebooks <./organize_ebooks/>`_::
-
- $ pip install git+https://github.com/raul23/organize-ebooks#egg=organize-ebooks
- 
-**Test installation**
-
-1. Test your installation by importing ``organize_ebooks`` and printing its
-   version::
-
-   $ python -c "import organize_ebooks; print(organize_ebooks.__version__)"
-
-2. You can also test that you have access to the ``organize_ebooks.py`` script by
-   showing the program's version::
-
-   $ organize_ebooks --version
-
-Uninstall
----------
-To uninstall the development version of the package `organize_ebooks <./organize_ebooks/>`_::
-
- $ pip uninstall organize_ebooks
-
 Installing with ``docker`` (Recommended) [TODO]
 ===============================================
 TODO
+
+It is recommended to install the package `organize_ebooks <./organize_ebooks/>`_ with ``docker`` because the docker
+container has all the many `dependencies <#dependencies>`_ already installed along with the ``organize_ebooks`` package.
 
 `:information_source:` If you are having trouble pushing your docker image to hub.docker.com with an old macOS
 
@@ -163,6 +139,36 @@ TODO
   <https://jhooq.com/requested-access-to-resource-is-denied/>`_ using docker)::
   
    Removing login credentials for https://index.docker.io/v1/
+
+Installing the development version with ``pip``
+===============================================
+Install
+-------
+`:information_source:` After you have installed the dependencies, now you can install the 
+package `organize_ebooks <./organize_ebooks/>`_.
+
+To install the development version (i.e. bleeding-edge version with the latest features but not ready yet for wide release) 
+of the package `organize_ebooks <./organize_ebooks/>`_::
+
+ $ pip install git+https://github.com/raul23/organize-ebooks#egg=organize-ebooks
+ 
+**Test installation**
+
+1. Test your installation by importing ``organize_ebooks`` and printing its
+   version::
+
+   $ python -c "import organize_ebooks; print(organize_ebooks.__version__)"
+
+2. You can also test that you have access to the ``organize_ebooks.py`` script by
+   showing the program's version::
+
+   $ organize_ebooks --version
+
+Uninstall
+---------
+To uninstall the development version of the package `organize_ebooks <./organize_ebooks/>`_::
+
+ $ pip uninstall organize_ebooks
 
 Script options
 ==============
