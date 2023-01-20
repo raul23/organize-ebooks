@@ -1,9 +1,7 @@
 ===============
 organize-ebooks
 ===============
-Automatically organize folders with potentially huge amounts of unorganized ebooks.
-
-This is a Python port of `organize-ebooks.sh <https://github.com/na--/ebook-tools/blob/master/organize-ebooks.sh>`_ 
+Automatically organize folders with potentially huge amounts of unorganized ebooks. This is a Python port of `organize-ebooks.sh <https://github.com/na--/ebook-tools/blob/master/organize-ebooks.sh>`_ 
 from `ebook-tools <https://github.com/na--/ebook-tools>`_ written in shell by `na-- <https://github.com/na-->`_.
 
 .. contents:: **Contents**
