@@ -132,8 +132,8 @@ To uninstall the development version of the package `organize_ebooks <./organize
 
  $ pip uninstall organize_ebooks
 
-Installing the package ``organize_ebooks`` with ``docker`` (Recommended) [TODO]
-===============================================================================
+Installing with ``docker`` (Recommended) [TODO]
+===============================================
 TODO
 
 `:information_source:` If you are having trouble pushing your docker image to hub.docker.com with an old macOS
