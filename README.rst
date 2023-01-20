@@ -386,6 +386,18 @@ Sample output:
  
 TODOs and notes
 ===============
+TODOs
+-----
+- ``pdfinfo`` can be too sensitive sometimes by labeling PDF books as corrupted even though they can be opened without problems::
+
+   Syntax Error: Dictionary key must be a name object
+   Syntax Error: Couldn't find trailer dictionary
+   
+  TODO: ignore these errors and continue processing the PDF file
+  
+- Maybe skip archives (e.g. ``zip`` and ``7z``) by default? Can really slow down everything since each decompressed file is analyzed for ISBNs. [TODO]
+Notes
+-----
 - Having multiple metadata sources can slow down the ebooks organization. 
 
   - By default, we have for ``metadata-fetch-order``:: 
@@ -414,16 +426,6 @@ TODOs and notes
     Solution: I had to modify ``find_isbns()`` to take into account these annoying "artifacts" from the conversion procedure
 
   Obviously, they are skipped if I didn't enable OCR with the option ``--ocr-enabled`` (by default it is set to 'false')
-
-- ``pdfinfo`` can be too sensitive sometimes by labeling PDF books as corrupted even though they can be opened without problems::
-
-   Syntax Error: Dictionary key must be a name object
-   Syntax Error: Couldn't find trailer dictionary
-   
-  TODO: ignore these errors and continue processing the PDF file
-  
-- Maybe skip archives (e.g. ``zip`` and ``7z``) by default? Can really slow down everything since each decompressed file is analyzed for ISBNs. [TODO]
-
 - I was trying to build a docker image based from `ebooktools/scripts <https://hub.docker.com/r/ebooktools/scripts/tags>`_ 
   which contains all the necessary dependencies (e.g. calibre, Tesseract) for a Debian system and I was going to add the Python
   package `organize_ebooks <./organize_ebooks/>`_ . However, I couldn't build an image from the base 
@@ -433,31 +435,33 @@ TODOs and notes
 
   Thus, I created an image from scratch starting with ``ubuntu:18.04`` that I am trying to push to hub.docker.com but I am always
   getting the error ``requested access to the resource is denied``. 
-  
-  `:information_source:` If you are having trouble pushing your docker image to hub.docker.com with an old macOS
 
-    I was trying to push to hub.docker.com but I was getting the error ``requested access to the resource is denied``. 
+Docker error: ``requested access to the resource is denied``
+------------------------------------------------------------
+`:information_source:` If you are having trouble pushing your docker image to hub.docker.com with an old macOS
 
-    I tried everything that was suggested on various forums: checking that I 
-    named my image and repo correctly, making sure I was logged in before pushing, making sure that I was not pushing to a private
-    repo or to docker.io/library/, making sure that my Docker client was running, and so on. 
+  I was trying to push to hub.docker.com but I was getting the error ``requested access to the resource is denied``. 
 
-    I was finally able to push the Docker image to hub.docker.com by installing Ubuntu 22.04 in a virtual machine since I was
-    finally convinced that my very old macOS wasn't compatible with Docker anymore. Also my Docker version was way too old
-    and the latest Docker requires newer versions of macOS. The only ``docker`` operation I was not able to accomplish
-    with my old macOS was ``docker push``.
+  I tried everything that was suggested on various forums: checking that I 
+  named my image and repo correctly, making sure I was logged in before pushing, making sure that I was not pushing to a private
+  repo or to docker.io/library/, making sure that my Docker client was running, and so on. 
 
-    **SOLUTION:** thus the solution if you tried everything under the sun to try fixing the pushing problem is to finally accept that your 
-    old macOS (or any other OS) is the cause and you should try Docker on a newer system. Since I didn't want to install a newer version of macOS (I 
-    don't want to break my current programs and I don't think my system is able to support it), I opted for installing Docker with
-    Ubuntu 22.04 under a virtual machine.
+  I was finally able to push the Docker image to hub.docker.com by installing Ubuntu 22.04 in a virtual machine since I was
+  finally convinced that my very old macOS wasn't compatible with Docker anymore. Also my Docker version was way too old
+  and the latest Docker requires newer versions of macOS. The only ``docker`` operation I was not able to accomplish
+  with my old macOS was ``docker push``.
 
-    What I noticed strange though was that on my old macOS when I log out from Docker, I get the following message::
+  **SOLUTION:** thus the solution if you tried everything under the sun to try fixing the pushing problem is to finally accept that your 
+  old macOS (or any other OS) is the cause and you should try Docker on a newer system. Since I didn't want to install a newer version of macOS (I 
+  don't want to break my current programs and I don't think my system is able to support it), I opted for installing Docker with
+  Ubuntu 22.04 under a virtual machine.
 
-     Not logged in to https://index.docker.io/v1/
+  What I noticed strange though was that on my old macOS when I log out from Docker, I get the following message::
 
-    However on Ubuntu 22.04, this is what I get when I log out from Docker (and this is what I see from `other people 
-    <https://jhooq.com/requested-access-to-resource-is-denied/>`_ using docker)::
+   Not logged in to https://index.docker.io/v1/
+
+  However on Ubuntu 22.04, this is what I get when I log out from Docker (and this is what I see from `other people 
+  <https://jhooq.com/requested-access-to-resource-is-denied/>`_ using docker)::
 
      Removing login credentials for https://index.docker.io/v1/
      
