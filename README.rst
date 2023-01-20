@@ -114,28 +114,27 @@ container has all the many `dependencies <#dependencies>`_ already installed alo
 
 `:information_source:` If you are having trouble pushing your docker image to hub.docker.com with an old macOS
 
-  I was trying to build a docker image based from `ebooktools/scripts <https://hub.docker.com/r/ebooktools/scripts/tags>`_ 
-  which contains all the necessary dependencies (e.g. calibre, Tesseract) for a Debian system and I was going to add the Python
-  package `organize_ebooks <./organize_ebooks/>`_ . However, I couldn't build an image from the base 
-  OS ``debian:sid-slim`` as specified in its `Dockerfile <https://github.com/na--/ebook-tools/blob/master/Dockerfile>`_::
+  I was trying to push to hub.docker.com but I was getting the error ``requested access to the resource is denied``. 
 
-   The following signatures couldn't be verified because the public key is not available: NO_PUBKEY
+  I tried everything that was suggested on various forums: checking that I 
+  named my image and repo correctly, making sure I was logged in before pushing, making sure that I was not pushing to a private
+  repo, making sure that my Docker client was running, and so on. 
 
-  Thus, I created an image from scratch starting with ``ubuntu:18.04`` that I am trying to push to hub.docker.com but I am always
-  getting the error ``requested access to the resource is denied``. 
-
-  I was finally able to push the docker image to hub.docker.com by installing Ubuntu 22.04 in a virtual machine since I was
+  I was finally able to push the Docker image to hub.docker.com by installing Ubuntu 22.04 in a virtual machine since I was
   finally convinced that my very old macOS wasn't compatible with Docker anymore. Also my Docker version was way too old
   and the latest Docker requires newer versions of macOS. The only ``docker`` operation I was not able to accomplish
-  with my old macOS was ``docker push``. I tried everything that was suggested on various forums (e.g. checking that I 
-  named my image and repo correctly, making sure I was logged in before pushing, making sure that I was not pushing to a private
-  repo, making sure that my Docker client was running, and so on) 
+  with my old macOS was ``docker push``.
+  
+  **SOLUTION:** thus the solution if you tried everything under the sun to fix the pushing problem is to finally accept that your 
+  old macOS (or any other OS) is the cause and you should try Docker on a newer system. Since I didn't want to install a newer version of macOS (I 
+  don't want to break my current programs and I don't think my system is able to support it), I opted for installing Docker with
+  Ubuntu 22.04 under a virtual machine.
 
-  What I noticed strange though was that on my old macOS when I log out from docker, I get the following message::
+  What I noticed strange though was that on my old macOS when I log out from Docker, I get the following message::
   
    Not logged in to https://index.docker.io/v1/
    
-  However on Ubuntu 22.04, this is what I get when I log out from docker (and this is what I see from `other people 
+  However on Ubuntu 22.04, this is what I get when I log out from Docker (and this is what I see from `other people 
   <https://jhooq.com/requested-access-to-resource-is-denied/>`_ using docker)::
   
    Removing login credentials for https://index.docker.io/v1/
@@ -451,3 +450,14 @@ TODOs and notes
   TODO: ignore these errors and continue processing the PDF file
   
 - Maybe skip archives (e.g. ``zip`` and ``7z``) by default? Can really slow down everything since each decompressed file is analyzed for ISBNs. [TODO]
+
+- I was trying to build a docker image based from `ebooktools/scripts <https://hub.docker.com/r/ebooktools/scripts/tags>`_ 
+  which contains all the necessary dependencies (e.g. calibre, Tesseract) for a Debian system and I was going to add the Python
+  package `organize_ebooks <./organize_ebooks/>`_ . However, I couldn't build an image from the base 
+  OS ``debian:sid-slim`` as specified in its `Dockerfile <https://github.com/na--/ebook-tools/blob/master/Dockerfile>`_::
+
+   The following signatures couldn't be verified because the public key is not available: NO_PUBKEY
+
+  Thus, I created an image from scratch starting with ``ubuntu:18.04`` that I am trying to push to hub.docker.com but I am always
+  getting the error ``requested access to the resource is denied``. 
+  
