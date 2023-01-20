@@ -456,7 +456,7 @@ Docker error: ``requested access to the resource is denied``
   don't want to break my current programs and I don't think my system is able to support it), I opted for installing Docker with
   Ubuntu 22.04 under a virtual machine.
 
-  What I noticed strange though was that on my old macOS when I log out from Docker, I get the following message::
+  What I noticed strange though was that on my old macOS when I logged out from Docker, I got the following message::
 
    Not logged in to https://index.docker.io/v1/
 
