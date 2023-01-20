@@ -105,9 +105,12 @@ This is the environment on which the script `organize_ebooks.py <./organize_eboo
     
   However, accuracy and performance will be affected as explained in the list of dependencies above.
 
-Installation with ``pip``
-=========================
-To install the `organize_ebooks <./organize_ebooks/>`_ package::
+Installation the development version with ``pip``
+===================================================
+Install
+-------
+To install thedevelopment version (i.e. bleeding-edge version with the latest features but not ready yet for wide release) 
+of the package `organize_ebooks <./organize_ebooks/>`_::
 
  $ pip install git+https://github.com/raul23/organize-ebooks#egg=organize-ebooks
  
@@ -123,9 +126,9 @@ To install the `organize_ebooks <./organize_ebooks/>`_ package::
 
    $ organize_ebooks --version
 
-Uninstall with ``pip``
-======================
-To uninstall the `organize_ebooks <./organize_ebooks/>`_ package::
+Uninstall
+---------
+To uninstall the development version of the package `organize_ebooks <./organize_ebooks/>`_::
 
  $ pip uninstall organize_ebooks
 
