@@ -465,4 +465,4 @@ Docker error: ``requested access to the resource is denied``
 
      Removing login credentials for https://index.docker.io/v1/
      
-    Maybe on the old macOS I was not correctly authenticated (even though I got the message ``Login Succeeded``) and thus I couldn't do the ``push``.
+  Maybe on the old macOS I was not correctly authenticated (even though I got the message ``Login Succeeded``) and thus I couldn't do the ``push``.
