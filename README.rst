@@ -385,10 +385,8 @@ Sample output:
    :align: left
    :alt: Example: output terminal with debug messages
  
-TODOs and notes
-===============
 TODOs
------
+=====
 - ``pdfinfo`` can be too sensitive sometimes by labeling PDF books as corrupted even though they can be opened without problems::
 
    Syntax Error: Dictionary key must be a name object
@@ -397,8 +395,9 @@ TODOs
   TODO: ignore these errors and continue processing the PDF file
   
 - Maybe skip archives (e.g. ``zip`` and ``7z``) by default? Can really slow down everything since each decompressed file is analyzed for ISBNs. [TODO]
+
 Notes
------
+=====
 - Having multiple metadata sources can slow down the ebooks organization. 
 
   - By default, we have for ``metadata-fetch-order``:: 
@@ -438,7 +437,7 @@ Notes
   getting the error ``requested access to the resource is denied``. 
 
 Docker error: ``requested access to the resource is denied``
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+------------------------------------------------------------
 `:information_source:` If you are having trouble pushing your docker image to hub.docker.com with an old macOS
 
   I was trying to push to hub.docker.com but I was getting the error ``requested access to the resource is denied``. 
