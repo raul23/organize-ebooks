@@ -3,6 +3,20 @@ organize-ebooks
 ===============
 Automatically organize folders with potentially huge amounts of unorganized ebooks.
 
+This is a Python port of `organize-ebooks.sh <https://github.com/na--/ebook-tools/blob/master/organize-ebooks.sh>`_ 
+from `ebook-tools <https://github.com/na--/ebook-tools>`_ written in shell by `na-- <https://github.com/na-->`_.
+
+|
+
+.. contents:: **Contents**
+   :depth: 3
+   :local:
+   :backlinks: top
+
+About
+=====
+Automatically organize folders with potentially huge amounts of unorganized ebooks.
+
 This is done by renaming the files with proper names and moving them to other
 folders.
 
@@ -16,14 +30,7 @@ from `ebook-tools <https://github.com/na--/ebook-tools>`_ written in shell by `n
 - `ocr <https://github.com/raul23/ocr>`_: OCR documents (pdf, djvu, and images)
 - `split-ebooks-into-folders <https://github.com/raul23/split-ebooks-into-folders>`_: split the supplied ebook files into 
   folders with consecutive names
-
-|
-
-.. contents:: **Contents**
-   :depth: 3
-   :local:
-   :backlinks: top
-
+  
 Dependencies
 ============
 This is the environment on which the script `organize_ebooks.py <./organize_ebooks/scripts/organize_ebooks.py>`_ was developed and tested:
