@@ -447,7 +447,7 @@ TODOs and notes
     and the latest Docker requires newer versions of macOS. The only ``docker`` operation I was not able to accomplish
     with my old macOS was ``docker push``.
 
-    **SOLUTION:** thus the solution if you tried everything under the sun to fix the pushing problem is to finally accept that your 
+    **SOLUTION:** thus the solution if you tried everything under the sun to try fix the pushing problem is to finally accept that your 
     old macOS (or any other OS) is the cause and you should try Docker on a newer system. Since I didn't want to install a newer version of macOS (I 
     don't want to break my current programs and I don't think my system is able to support it), I opted for installing Docker with
     Ubuntu 22.04 under a virtual machine.
