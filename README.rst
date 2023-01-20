@@ -461,7 +461,7 @@ Docker error: ``requested access to the resource is denied``
    Not logged in to https://index.docker.io/v1/
 
   However on Ubuntu 22.04, this is what I get when I log out from Docker (and this is what I see from `other people 
-  <https://jhooq.com/requested-access-to-resource-is-denied/>`_ using docker)::
+  <https://jhooq.com/requested-access-to-resource-is-denied/>`_ using Docker)::
 
      Removing login credentials for https://index.docker.io/v1/
      
