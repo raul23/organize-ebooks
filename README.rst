@@ -26,7 +26,7 @@ from `ebook-tools <https://github.com/na--/ebook-tools>`_ written in shell by `n
 
 Dependencies
 ============
-This is the environment on which the script `organize_ebooks.py <./organize_ebooks/scripts/organize_ebooks.py>`_ was tested:
+This is the environment on which the script `organize_ebooks.py <./organize_ebooks/scripts/organize_ebooks.py>`_ was developed and tested:
 
 * **Platform:** macOS
 * **Python**: version **3.7**
@@ -105,8 +105,8 @@ This is the environment on which the script `organize_ebooks.py <./organize_eboo
     
   However, accuracy and performance will be affected as explained in the list of dependencies above.
 
-Installation
-============
+Installation with ``pip``
+=========================
 To install the `organize_ebooks <./organize_ebooks/>`_ package::
 
  $ pip install git+https://github.com/raul23/organize-ebooks#egg=organize-ebooks
@@ -123,11 +123,24 @@ To install the `organize_ebooks <./organize_ebooks/>`_ package::
 
    $ organize_ebooks --version
 
-Uninstall
-=========
+Uninstall with ``pip``
+======================
 To uninstall the `organize_ebooks <./organize_ebooks/>`_ package::
 
  $ pip uninstall organize_ebooks
+
+Install with ``docker`` [TODO]
+==============================
+I was trying to build a docker image based from `ebooktools/scripts <https://hub.docker.com/r/ebooktools/scripts/tags>`_ 
+which contains all the necessary dependencies (e.g. calibre, Tesseract) for a Debian system. However, I couldn't pulled the base 
+OS ``debian:sid-slim`` as specified in its `Dockerfile <https://github.com/na--/ebook-tools/blob/master/Dockerfile>`_::
+
+ The following signatures couldn't be verified because the public key is not available: NO_PUBKEY
+
+Thus, I created an image from scratch starting from ``ubuntu:18.04`` that I am trying to push but I am always
+getting the error ``requested access to the resource is denied``. 
+
+TODO
 
 Script options
 ==============
