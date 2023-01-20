@@ -451,10 +451,10 @@ Docker error: ``requested access to the resource is denied`` 😡
   and the latest Docker requires newer versions of macOS. The only ``docker`` operation I was not able to accomplish (as far as I know)
   with my old macOS was ``docker push``.
 
-  👉 **SOLUTION:** if you tried everything under the sun to try fixing the ``push`` problem, the solution is to finally accept that your 
-  old macOS (or any other OS) is the cause and you should try Docker on a newer system. Since I didn't want to install a newer version of macOS (I 
-  don't want to break my current programs and I don't think my system is able to support it), I opted for installing Docker with
-  Ubuntu 22.04 under a virtual machine.
+  👉 **SOLUTION:** if you tried everything under the sun to try fixing the ``push`` problem but you still couldn't solve it, then the 
+  solution is to finally accept that your old macOS (or any other OS) is the cause and you should try Docker on a newer system. Since I didn't want to 
+  install a newer version of macOS (I don't want to break my current programs and I don't think my system is able to support it), I opted for 
+  installing Docker with Ubuntu 22.04 under a virtual machine.
 
   What I noticed strange though was that on my old macOS when I logged out from Docker, I got the following message::
 
