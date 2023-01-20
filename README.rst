@@ -14,7 +14,7 @@ About
 `organize_ebooks.py <./organize_ebooks/scripts/organize_ebooks.py>`_ automatically organize folders with potentially huge amounts of unorganized 
 ebooks. This is done by renaming the files with proper names and moving them to other folders.
 
-This is a Python port of `organize-ebooks.sh <https://github.com/na--/ebook-tools/blob/master/organize-ebooks.sh>`_ 
+It is a Python port of `organize-ebooks.sh <https://github.com/na--/ebook-tools/blob/master/organize-ebooks.sh>`_ 
 from `ebook-tools <https://github.com/na--/ebook-tools>`_ written in shell by `na-- <https://github.com/na-->`_.
 
 `:star:` Other related Python projects based on ``ebook-tools``:
