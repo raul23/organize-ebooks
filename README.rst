@@ -119,10 +119,11 @@ Install
 `:information_source:` After you have installed the `dependencies <#dependencies>`_, now you can install the 
 package `organize_ebooks <./organize_ebooks/>`_.
 
-To install the development version (i.e. bleeding-edge version with the latest features but not ready yet for wide release) 
-of the package `organize_ebooks <./organize_ebooks/>`_::
+To install the development version of the package `organize_ebooks <./organize_ebooks/>`_::
 
  $ pip install git+https://github.com/raul23/organize-ebooks#egg=organize-ebooks
+ 
+NOTE: the development version has the latest features but is not ready yet (not stable enough) for wide release 
  
 **Test installation**
 
