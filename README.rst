@@ -123,7 +123,7 @@ To install the development version of the package `organize_ebooks <./organize_e
 
  $ pip install git+https://github.com/raul23/organize-ebooks#egg=organize-ebooks
  
-NOTE: the development version has the latest features but is not ready yet (not stable enough) for wide release 
+**NOTE:** the development version has the latest features but is not ready yet (not stable enough) for wide release 
  
 **Test installation**
 
