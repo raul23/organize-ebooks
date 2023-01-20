@@ -132,7 +132,8 @@ To uninstall the `organize_ebooks <./organize_ebooks/>`_ package::
 Install with ``docker`` [TODO]
 ==============================
 I was trying to build a docker image based from `ebooktools/scripts <https://hub.docker.com/r/ebooktools/scripts/tags>`_ 
-which contains all the necessary dependencies (e.g. calibre, Tesseract) for a Debian system. However, I couldn't build an image from the base 
+which contains all the necessary dependencies (e.g. calibre, Tesseract) for a Debian system and I was going to add the the Python
+package `organize_ebooks <./organize_ebooks/>`_ . However, I couldn't build an image from the base 
 OS ``debian:sid-slim`` as specified in its `Dockerfile <https://github.com/na--/ebook-tools/blob/master/Dockerfile>`_::
 
  The following signatures couldn't be verified because the public key is not available: NO_PUBKEY
