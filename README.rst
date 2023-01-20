@@ -440,7 +440,7 @@ TODOs and notes
 
     I tried everything that was suggested on various forums: checking that I 
     named my image and repo correctly, making sure I was logged in before pushing, making sure that I was not pushing to a private
-    repo, making sure that my Docker client was running, and so on. 
+    repo or to docker.io/library/, making sure that my Docker client was running, and so on. 
 
     I was finally able to push the Docker image to hub.docker.com by installing Ubuntu 22.04 in a virtual machine since I was
     finally convinced that my very old macOS wasn't compatible with Docker anymore. Also my Docker version was way too old
@@ -460,3 +460,5 @@ TODOs and notes
     <https://jhooq.com/requested-access-to-resource-is-denied/>`_ using docker)::
 
      Removing login credentials for https://index.docker.io/v1/
+     
+    Maybe on the old macOS I was not correctly authenticated (even though I got the message ``Login Succeeded``) and thus I couldn't do the ``push``.
