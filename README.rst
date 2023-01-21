@@ -127,14 +127,14 @@ original bash shell scripts from `ebook-tools <https://github.com/na--/ebook-too
 
    $ docker run -it -v /some/host/folder/:/unorganized-books raul23/organize:latest
 
-3. 
+3. TODO
 
 Content of the Docker image
 ===========================
 `:information_source:` 
  
  - The layers of the Docker image can be checked in details at the project's `Docker repo 
-   <https://hub.docker.com/layers/raul23/organize/latest/images/sha256-a4b61239c62c6834cc356dfd3736de8e9fa1b33d26a82f02bd05476328918012?context=repo>`_ where you can find the commanda used in the Dockerfile for installing all the dependencies in the base OS (Ubuntu 18.04).
+   <https://hub.docker.com/layers/raul23/organize/latest/images/sha256-a4b61239c62c6834cc356dfd3736de8e9fa1b33d26a82f02bd05476328918012?context=repo>`_ where you can find the commands used in the Dockerfile for installing all the dependencies in the base OS (Ubuntu 18.04).
  - This Python-based Docker image is formed from the one used by the project `ebook-tools <https://github.com/na--/ebook-tools>`_ (shell scripts) 
    which you can find at the `Docker Hub <https://hub.docker.com/r/ebooktools/scripts/tags>`_. One of the main differences being one of that the 
    the base OS is Ubuntu 18.04 and Debian, respectively.
@@ -154,7 +154,7 @@ The `Docker image <https://hub.docker.com/repository/docker/raul23/organize/gene
    - Poppler: ``pdftotext`` and ``pdfinfo``
    - calibre: ``ebook-convert``, ``ebook-meta``, calibre's metadata plugins (Goodreads and WorldCat xISBN)
    - unzip
-3. 
+3. TODO
 4. The shell scripts from the project `ebook-tools <https://github.com/na--/ebook-tools>`_::
 
     convert-to-txt.sh, find-isbns.sh, interactive-organizer.sh, lib.sh, organize-ebooks.sh, rename-calibre-library.sh, split-into-folders.sh
