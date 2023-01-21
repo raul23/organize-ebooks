@@ -117,7 +117,7 @@ Installing the development version with ``pip``
 ===============================================
 Install
 -------
-`:information_source:` After you have installed the `dependencies <#dependencies>`_, now you can install the 
+`:information_source:` After you have installed the `dependencies <#dependencies>`_, you can then install the 
 package `organize_ebooks <./organize_ebooks/>`_.
 
 To install the development (bleeding-edge) version of the package `organize_ebooks <./organize_ebooks/>`_::
