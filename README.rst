@@ -32,7 +32,7 @@ Dependencies
 
    You can ignore this section and go straight to pulling the `Docker image <#installing-with-docker-recommended-todo>`_ which contains all the 
    required dependencies and the Python package ``organize_ebooks`` already installed. This section is more for showing how I setup my system
-   when porting the shell script `organize-ebooks.sh <https://github.com/na--/ebook-tools/blob/master/organize-ebooks.sh>`_  et al. to Python.
+   when porting the shell script `organize-ebooks.sh <https://github.com/na--/ebook-tools/blob/master/organize-ebooks.sh>`_ et al. to Python.
 
 This is the environment on which the package `organize_ebooks <./organize_ebooks/y>`_ was developed and tested:
 
@@ -113,12 +113,23 @@ This is the environment on which the package `organize_ebooks <./organize_ebooks
     
   However, accuracy and performance will be affected as explained in the list of dependencies above.
 
-Installing with Docker (Recommended) [TODO]
-===========================================
-TODO: push the Docker image to hub.docker.com and test it afterward on macOS and Ubuntu
+Installing with Docker (Recommended)
+====================================
+`:information_source:` It is recommended to install the package `organize_ebooks <./organize_ebooks/>`_ with **Docker** because the Docker
+container has all the many `dependencies <#dependencies>`_ already installed along with the ``organize_ebooks`` package. I also included the
+original bash shell scripts from `ebook-tools <https://github.com/na--/ebook-tools>`_.
 
-It is recommended to install the package `organize_ebooks <./organize_ebooks/>`_ with **Docker** because the Docker
-container has all the many `dependencies <#dependencies>`_ already installed along with the ``organize_ebooks`` package.
+1. Pull the Docker image from hub.docker.com::
+
+    $ docker pull raul23/organize:latest
+    
+Content of the Docker image
+===========================
+The `Docker image <https://hub.docker.com/repository/docker/raul23/organize/general>`_ for this project contains the following components:
+
+1. All the many `dependencies <>`_ needed for a fu:
+
+   - 
 
 Installing the development version with ``pip``
 ===============================================
