@@ -178,7 +178,7 @@ The `Docker image <https://hub.docker.com/repository/docker/raul23/organize/gene
 
     convert-to-txt.sh, find-isbns.sh, interactive-organizer.sh, lib.sh, organize-ebooks.sh, rename-calibre-library.sh, split-into-folders.sh
 5. ``user``: a user named ``user`` is created with UID 1000. ``user`` doesn't have root privileges within the Docker container. Thus
-   you can't install packages with ``apt-get install``.
+   you can't among other things install packages with ``apt-get install``.
 
 Installing the development version
 ==================================
