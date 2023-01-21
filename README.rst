@@ -110,11 +110,11 @@ This is the environment on which the script `organize_ebooks.py <./organize_eboo
     
   However, accuracy and performance will be affected as explained in the list of dependencies above.
 
-Installing with ``docker`` (Recommended) [TODO]
-===============================================
+Installing with Docker (Recommended) [TODO]
+===========================================
 TODO
 
-It is recommended to install the package `organize_ebooks <./organize_ebooks/>`_ with ``docker`` because the docker
+It is recommended to install the package `organize_ebooks <./organize_ebooks/>`_ with **Docker** because the Docker
 container has all the many `dependencies <#dependencies>`_ already installed along with the ``organize_ebooks`` package.
 
 Installing the development version with ``pip``
