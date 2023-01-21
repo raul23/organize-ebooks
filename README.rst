@@ -135,8 +135,8 @@ Content of the Docker image
  
  - The Docker image layers can be checked at the project's `repo 
    <https://hub.docker.com/layers/raul23/organize/latest/images/sha256-a4b61239c62c6834cc356dfd3736de8e9fa1b33d26a82f02bd05476328918012?context=repo>`_ where you can find the commanda used in the Dockerfile for installing all the dependencies in the base OS (Ubuntu 18.04).
-- The Docker image is based on the one used by the project `ebook-tools <https://github.com/na--/ebook-tools>`_ (shell scripts) which 
-  you can find at the `Docker Hub <https://hub.docker.com/r/ebooktools/scripts/tags>`_.
+ - The Docker image is based on the one used by the project `ebook-tools <https://github.com/na--/ebook-tools>`_ (shell scripts) which 
+   you can find at the `Docker Hub <https://hub.docker.com/r/ebooktools/scripts/tags>`_.
 
 The `Docker image <https://hub.docker.com/repository/docker/raul23/organize/general>`_ for this project contains the following components:
 
