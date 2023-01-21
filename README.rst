@@ -136,7 +136,7 @@ Content of the Docker image
  - The layers of the Docker image can be checked in details at the project's `Docker repo 
    <https://hub.docker.com/layers/raul23/organize/latest/images/sha256-a4b61239c62c6834cc356dfd3736de8e9fa1b33d26a82f02bd05476328918012?context=repo>`_ where you can find the commands used in the Dockerfile for installing all the dependencies in the base OS (Ubuntu 18.04).
  - This Python-based Docker image is formed from the one used by the project `ebook-tools <https://github.com/na--/ebook-tools>`_ (shell scripts) 
-   which you can find at the `Docker Hub <https://hub.docker.com/r/ebooktools/scripts/tags>`_. One of the main differences being one of that the 
+   which you can find at the `Docker Hub <https://hub.docker.com/r/ebooktools/scripts/tags>`_. One of the main differences being that 
    the base OS is Ubuntu 18.04 and Debian, respectively.
 
 The `Docker image <https://hub.docker.com/repository/docker/raul23/organize/general>`_ for this project contains the following components:
