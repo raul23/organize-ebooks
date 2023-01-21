@@ -185,13 +185,13 @@ Installing the development version
 Install
 -------
 `:information_source:` After you have installed the `dependencies <#dependencies>`_, you can then install the 
-package `organize_ebooks <./organize_ebooks/>`_.
+package `organize_ebooks <./organize_ebooks/>`_ with ``pip``.
 
 To install the development (bleeding-edge) version of the package `organize_ebooks <./organize_ebooks/>`_::
 
  $ pip install git+https://github.com/raul23/organize-ebooks#egg=organize-ebooks
  
-**NOTE:** the development version has the latest features but is not ready yet (not stable enough) for wide release 
+**NOTE:** the development version has the latest features 
  
 **Test installation**
 
