@@ -112,7 +112,7 @@ This is the environment on which the package `organize_ebooks <./organize_ebooks
 
 Installing with Docker (Recommended) [TODO]
 ===========================================
-TODO: pushing the Docker image to hub.docker.com and testing it afterward on macOS and Ubuntu
+TODO: push the Docker image to hub.docker.com and test it afterward on macOS and Ubuntu
 
 It is recommended to install the package `organize_ebooks <./organize_ebooks/>`_ with **Docker** because the Docker
 container has all the many `dependencies <#dependencies>`_ already installed along with the ``organize_ebooks`` package.
