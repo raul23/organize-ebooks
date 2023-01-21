@@ -32,7 +32,7 @@ Dependencies
 
    You can ignore this section and go straight to pulling the `Docker image <#installing-with-docker-recommended-todo>`_ which contains all the 
    required dependencies and the Python package ``organize_ebooks`` already installed. This section is more for showing how I setup my system
-   when porting the shell script `organize-ebooks.sh <https://github.com/na--/ebook-tools/blob/master/organize-ebooks.sh>`_ to Python.
+   when porting the shell script `organize-ebooks.sh <https://github.com/na--/ebook-tools/blob/master/organize-ebooks.sh>`_  et al. to Python.
 
 This is the environment on which the package `organize_ebooks <./organize_ebooks/y>`_ was developed and tested:
 
