@@ -155,7 +155,7 @@ Content of the Docker image
 
 The `Docker image <https://hub.docker.com/repository/docker/raul23/organize/general>`_ for this project contains the following components:
 
-1. Ubuntu 18.04: the base system of the Docker container
+1. Ubuntu 18.04: the base system of the Docker image
 2. All the `dependencies <#dependencies>`_ (required and optional) needed for supporting all the features (e.g. OCR, document 
    conversion to text) offered by the package ``organize_ebooks``:
 
