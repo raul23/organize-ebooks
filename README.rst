@@ -122,14 +122,42 @@ original bash shell scripts from `ebook-tools <https://github.com/na--/ebook-too
 1. Pull the Docker image from hub.docker.com::
 
     $ docker pull raul23/organize:latest
-    
+
+2. Run the Docker container::
+
+   $ docker run -it -v /some/host/folder/:/unorganized-books raul23/organize:latest
+
+3. 
+
 Content of the Docker image
 ===========================
+`:information_source:` 
+ 
+ - The Docker image layers can be checked at the project's `repo 
+   <https://hub.docker.com/layers/raul23/organize/latest/images/sha256-a4b61239c62c6834cc356dfd3736de8e9fa1b33d26a82f02bd05476328918012?context=repo>`_ where you can find the commanda used in the Dockerfile for installing all the dependencies in the base OS (Ubuntu 18.04).
+- The Docker image is based on the one used by the project `ebook-tools <https://github.com/na--/ebook-tools>`_ (shell scripts) which 
+  you can find at the `Docker Hub <https://hub.docker.com/r/ebooktools/scripts/tags>`_.
+
 The `Docker image <https://hub.docker.com/repository/docker/raul23/organize/general>`_ for this project contains the following components:
 
-1. All the many `dependencies <>`_ needed for a fu:
+1. Ubuntun 18.04: the base system of the Docker container
+2. All the `dependencies <#dependencies>`_ (required and optional) needed for supporting all the features (e.g. OCR, document 
+   conversion to text) offered by the package ``organize_ebooks``:
 
-   - 
+   - Python 3.6 along with ``setuptools`` and ``wheel``
+   - p7zip
+   - Tesseract
+   - Ghostscript: ``gs``)
+   - catdoc
+   - DjVuLibre: ``ddjvu``, ``djvused``, ``djvutxt``
+   - Poppler: ``pdftotext`` and ``pdfinfo``
+   - calibre: ``ebook-convert``, ``ebook-meta``, calibre's metadata plugins (Goodreads and WorldCat xISBN)
+   - unzip
+3. 
+4. The shell scripts from the project `ebook-tools <https://github.com/na--/ebook-tools>`_::
+
+    convert-to-txt.sh, find-isbns.sh, interactive-organizer.sh, lib.sh, organize-ebooks.sh, rename-calibre-library.sh, split-into-folders.sh
+5. ``user``: a user named ``user`` is created with UID 1000. Thus you don't have root privileges within the Docker container.
 
 Installing the development version with ``pip``
 ===============================================
