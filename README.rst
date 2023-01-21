@@ -172,7 +172,7 @@ The `Docker image <https://hub.docker.com/repository/docker/raul23/organize/gene
 4. The shell scripts from the project `ebook-tools <https://github.com/na--/ebook-tools>`_::
 
     convert-to-txt.sh, find-isbns.sh, interactive-organizer.sh, lib.sh, organize-ebooks.sh, rename-calibre-library.sh, split-into-folders.sh
-5. ``user``: a user named ``user`` is created with UID 1000. Thus you don't have root privileges within the Docker container.
+5. ``user``: a user named ``user`` is created with UID 1000. ``user`` doesn't have root privileges within the Docker container.
 
 Installing the development version
 ==================================
