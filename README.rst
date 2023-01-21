@@ -126,8 +126,22 @@ original bash shell scripts from `ebook-tools <https://github.com/na--/ebook-too
 2. Run the Docker container::
 
    $ docker run -it -v /some/host/folder/:/unorganized-books raul23/organize:latest
+   
+   `:information_source:` 
+   
+      - ``/some/host/folder/`` is a directory within your OS that can contain all the ebooks to be organized and
+        is mounted as ``/unorganized-books`` within the Docker container.
+      - ``raul23/organize:latest`` is the name of the image upon which the Docker container will be created.
 
-3. TODO
+3. Now that you are within the Docker container, you can run the ``organize_ebooks`` script with the desired `options <#script-options>`_:
+
+   user@91a532f9110e:~$ organize_ebooks /unorganized-books/
+   
+   `:information_source:` 
+   
+       - This basic command tells the script ``organize_ebooks`` to organize the ebooks within ``/unorganized-books/``
+         and to save the renamed ebooks within the working directory which is the default location of the ``-o`` option.
+       - When you log as ``user`` (non-root) into the Docker container, your working directory is ``/ebook-tools``.
 
 Content of the Docker image
 ===========================
