@@ -383,10 +383,10 @@ Explaining some of the options/arguments
 
 Script usage
 ============
-Most basic command
-------------------
-At bare minimum, the script ``organize_ebooks`` requires an input folder containing the ebooks to organize. Thus, the following is the
-shortest command you can provide to the script:
+Basic command
+-------------
+At bare minimum, the script ``organize_ebooks`` requires an input folder containing the ebooks to organize. Thus, the following is one the
+most basic command you can provide to the script:
 
 .. code-block:: bash
 
