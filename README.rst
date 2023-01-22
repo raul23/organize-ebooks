@@ -360,7 +360,8 @@ The ebooks in the input folder will be searched for ISBNs. The script tries to f
 file by using progressively more "expensive" tactics (as stated in `lib.sh <https://github.com/na--/ebook-tools/blob/master/lib.sh#L519>`_ 
 from `ebook-tools <https://github.com/na--/ebook-tools>`_). 
 
-These are the steps in order followed by the ``organize_ebooks`` script (as soon as ISBNs are found, the script return them):
+These are the steps in order followed by the ``organize_ebooks`` script when searching ISBNs for a given ebook 
+(as soon as ISBNs are found, the script return them):
 
 1. The first location it tries to find ISBNs is the filename. 
 2. Then it checks the contents directly if it is a text file. 
