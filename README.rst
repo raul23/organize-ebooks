@@ -360,8 +360,8 @@ To organize a collection of documents (ebooks, pamplets) through the script ``or
   ebooks without ISBNs (``--ofu`` and ``--owi`` not used). These ignored files will just be skipped.
 - Also books made up with images will be skipped since OCR was not choosen (``--ocr`` is set to 'false' by default).
 
-Through the API
----------------
+Through the Python API
+----------------------
 Let's say we have this folder containing assorted documents:
 
 .. image:: ./images/input_folder.png
@@ -371,7 +371,7 @@ Let's say we have this folder containing assorted documents:
 
 |
 
-To organize this collection of documents (ebooks, pamphlets) through the API: 
+To organize this collection of documents (ebooks, pamphlets) through the Python API (i.e. ``organize_ebooks`` package): 
 
 .. code-block:: python
 
