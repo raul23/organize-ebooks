@@ -343,11 +343,10 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
   skipped (e.g. the file is an image) or failed (e.g. corrupted file).
 - The choices for ``--ocr`` are {always, true, false}
 
-  - 'always': always use OCR first when doing text conversion. If the converson fails, then use the other simpler conversion tools (``pdftotext`` and 
-    ``djvutxt``).
-  - 'true': first simpler conversion tools (``pdftotext`` and ``djvutxt``) will be used and then if a conversion method failed to convert an 
-    ebook to txt or resulted in an empty file, the OCR method will be used.
-  - 'false': never use OCR, only use the other simpler conversion tools (``pdftotext`` and ``djvutxt``).
+  - 'always': If the converson to text was successful but no ISBNs were found, then OCR is run on the document. Also, if the
+     conversion failed (e.g. its content is empty or doesn't contain any text), then OCR is applied to the document.
+  - 'true': OCR is applied to the document only if the conversion to text failed.
+  - 'false': No OCR is applied after the conversion to text.
 
 Script usage
 ============
