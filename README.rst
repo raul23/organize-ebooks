@@ -131,13 +131,13 @@ Installation instructions
 
 1. Pull the Docker image from hub.docker.com:
 
-   .. code-block:: terminal
+   .. code-block:: bash
 
       docker pull raul23/organize:latest
 
 2. Run the Docker container:
 
-   .. code-block:: terminal
+   .. code-block:: bash
 
       docker run -it -v /host/input/folder:/unorganized-books raul23/organize:latest
    
@@ -210,7 +210,7 @@ Install
 After you have installed the `dependencies <#dependencies>`_, you can install the development (bleeding-edge) 
 version of the package `organize_ebooks <./organize_ebooks/>`_:
 
- .. code-block:: terminal
+ .. code-block:: bash
  
     pip install git+https://github.com/raul23/organize-ebooks#egg=organize-ebooks
  
@@ -221,14 +221,14 @@ version of the package `organize_ebooks <./organize_ebooks/>`_:
 1. Test your installation by importing ``organize_ebooks`` and printing its
    version:
    
-   .. code-block:: terminal
+   .. code-block:: bash
 
       python -c "import organize_ebooks; print(organize_ebooks.__version__)"
 
 2. You can also test that you have access to the ``organize_ebooks.py`` script by
    showing the program's version:
 
-   .. code-block:: terminal
+   .. code-block:: bash
 
       organize_ebooks --version
 
@@ -407,7 +407,7 @@ Useful commands
 ---------------
 Organize ebooks with and without ISBNs:
 
-.. code-block:: terminal
+.. code-block:: bash
 
    organize_ebooks ~/input_folder/ -o ~/outut_folder/ --ofc ~/corrupt/ --ofu ~/uncertain/ --owi
 
@@ -424,7 +424,7 @@ Through the script ``organize_ebooks.py``
 -----------------------------------------
 To organize a collection of documents (ebooks, pamplets) through the script ``organize_ebooks.py``:
 
-.. code-block:: terminal
+.. code-block:: bash
 
    organize_ebooks ~/input_folder/ -o ~/output_folder/ --ofp ~/pamphlets/
  
