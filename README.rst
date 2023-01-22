@@ -212,9 +212,9 @@ Install
 After you have installed the `dependencies <#dependencies>`_, you can install the development (bleeding-edge) 
 version of the package `organize_ebooks <./organize_ebooks/>`_:
 
- .. code-block:: bash
+.. code-block:: bash
  
-    pip install git+https://github.com/raul23/organize-ebooks#egg=organize-ebooks
+   pip install git+https://github.com/raul23/organize-ebooks#egg=organize-ebooks
  
 **NOTE:** the development version has the latest features 
  
