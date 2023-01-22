@@ -120,8 +120,8 @@ This is the environment on which the Python package `organize_ebooks <./organize
     
   However, accuracy and performance will be affected as explained in the list of dependencies above.
 
-Installing with Docker (Recommended)
-====================================
+Installing with Docker (Recommended) ⭐
+=======================================
 `:information_source:` 
 
   It is recommended to install the Python package `organize_ebooks <./organize_ebooks/>`_ with **Docker** because the Docker
