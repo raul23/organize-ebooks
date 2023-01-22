@@ -542,7 +542,7 @@ Instead, *epub* files are decompressed with ``unzip -c`` which extracts files to
 in a text file. This text file is then searched for ISBNs. Hence the searching for ISBNs is quicker when applying ``unzip``
 to *epub* files than with ``7z``.
 
-Also, the reason for using ``unzip`` is to also make the conversion of *epub* files to text quicker and more accurate than calibre's 
+Also, the reason for using ``unzip`` is to make the conversion of *epub* files to text quicker and more accurate than calibre's 
 ``ebook-convert``.
 
 `:information_source:` epubs are basically zipped HTML files
