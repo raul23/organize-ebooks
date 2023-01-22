@@ -239,7 +239,7 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
   usage: organize_ebooks [OPTIONS] {folder_to_organize}
 
   Automatically organize folders with potentially huge amounts of unorganized ebooks.
-  This is done by renaming the files with proper names and moving them to other folders..
+  This is done by renaming the files with proper names and moving them to other folders.
 
   This script is based on the great ebook-tools written in shell by na-- (See https://github.com/na--/ebook-tools).
 
