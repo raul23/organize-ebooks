@@ -127,12 +127,15 @@ Installing with Docker (Recommended)
 
 2. Run the Docker container::
 
-   $ docker run -it -v /some/host/folder/:/unorganized-books raul23/organize:latest
+   $ docker run -it -v /host/input/folder:/unorganized-books raul23/organize:latest
    
    `:information_source:` 
    
-      - ``/some/host/folder/`` is a directory within your OS that can contain all the ebooks to be organized and
+      - ``/host/input/folder`` is a directory within your OS that can contain all the ebooks to be organized and
         is mounted as ``/unorganized-books`` within the Docker container.
+      - You can use the ``-v`` option mulitple times to mount several host output folders within the container, e.g.::
+        
+        $ docker run -it -v /some/hostfolder:/unorganized-books -v /host/output/folder:/output-folder raul23/organize:latest
       - ``raul23/organize:latest`` is the name of the image upon which the Docker container will be created.
 
 3. Now that you are within the Docker container, you can run the Python script ``organize_ebooks`` with the desired `options <#script-options>`_::
