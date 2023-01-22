@@ -115,9 +115,11 @@ This is the environment on which the package `organize_ebooks <./organize_ebooks
 
 Installing with Docker (Recommended)
 ====================================
-`:information_source:` It is recommended to install the package `organize_ebooks <./organize_ebooks/>`_ with **Docker** because the Docker
-container has all the many `dependencies <#dependencies>`_ already installed along with the ``organize_ebooks`` package. I also included the
-original bash shell scripts from `ebook-tools <https://github.com/na--/ebook-tools>`_.
+`:information_source:` 
+
+  It is recommended to install the package `organize_ebooks <./organize_ebooks/>`_ with **Docker** because the Docker
+  container has all the many `dependencies <#dependencies>`_ already installed along with the ``organize_ebooks`` package. I also included the
+  original bash shell scripts from `ebook-tools <https://github.com/na--/ebook-tools>`_.
 
 1. Pull the Docker image from hub.docker.com::
 
