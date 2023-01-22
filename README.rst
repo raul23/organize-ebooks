@@ -143,7 +143,7 @@ Installing with Docker (Recommended)
    
        - This basic command tells the script ``organize_ebooks`` to organize the ebooks within ``/unorganized-books/``
          and to save the renamed ebooks within the working directory which is the default location of the ``-o`` option.
-       - When you log as ``user`` (non-root) into the Docker container, your working directory is ``/ebook-tools``.
+       - When you log in as ``user`` (non-root) within the Docker container, your working directory is ``/ebook-tools``.
 
 Content of the Docker image
 ===========================
