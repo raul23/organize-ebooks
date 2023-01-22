@@ -122,6 +122,8 @@ This is the environment on which the Python package `organize_ebooks <./organize
 
 Installing with Docker (Recommended) ⭐
 =======================================
+Instructions
+------------
 `:information_source:` 
 
   It is recommended to install the Python package `organize_ebooks <./organize_ebooks/>`_ with **Docker** because the Docker
@@ -156,7 +158,7 @@ Installing with Docker (Recommended) ⭐
        - When you log in as ``user`` (non-root) within the Docker container, your working directory is ``/ebook-tools``.
 
 Content of the Docker image
-===========================
+---------------------------
 `:information_source:` 
  
  - The layers of the Docker image can be checked in details at the project's `Docker repo 
