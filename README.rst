@@ -34,7 +34,6 @@ from `ebook-tools <https://github.com/na--/ebook-tools>`_ written in shell by `n
   
 Dependencies
 ============
-.. TODO: remove '-todo' from link
 `:warning:` 
 
    You can ignore this section and go straight to pulling the `Docker image <#installing-with-docker-recommended>`_ which contains all the 
@@ -198,10 +197,14 @@ Installing the development version
 ==================================
 Install
 -------
-`:information_source:` After you have installed the `dependencies <#dependencies>`_, you can then install the 
-package `organize_ebooks <./organize_ebooks/>`_ with ``pip``.
+`:warning:` 
 
-To install the development (bleeding-edge) version of the package `organize_ebooks <./organize_ebooks/>`_::
+   You can ignore this section and go straight to pulling the `Docker image <#installing-with-docker-recommended>`_ which contains all the 
+   required dependencies and the Python package ``organize_ebooks`` already installed. This section is for installing the bleeding-edge
+   version of the Python package ``organize_ebooks` after you have installed the many `dependencies <#dependencies>`_.
+
+After you have installed the `dependencies <#dependencies>`_, you can install the development (bleeding-edge) 
+version of the package `organize_ebooks <./organize_ebooks/>`_::
 
  $ pip install git+https://github.com/raul23/organize-ebooks#egg=organize-ebooks
  
