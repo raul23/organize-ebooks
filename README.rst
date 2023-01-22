@@ -178,7 +178,7 @@ The `Docker image <https://hub.docker.com/repository/docker/raul23/organize/gene
    - ``catdoc``
    - DjVuLibre: ``ddjvu``, ``djvused``, ``djvutxt``
    - Poppler: ``pdftotext`` and ``pdfinfo``
-   - calibre: ``ebook-convert``, ``ebook-meta``, calibre's metadata plugins (Goodreads and WorldCat xISBN)
+   - calibre: ``ebook-convert``, ``ebook-meta``, calibre's metadata plugins (including Goodreads and WorldCat xISBN)
    
      The Goodreads plugin (goodreads.zip) is from this forum post (by a calibre Developer) (2022-12-23): 
      `mobileread.com <https://www.mobileread.com/forums/showpost.php?p=4283801&postcount=5>`_
