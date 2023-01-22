@@ -369,6 +369,8 @@ Explaining some of the options/arguments
 
 Script usage
 ============
+Most basic command
+------------------
 At bare minimum, the script ``organize_ebooks`` requires an input folder containing the ebooks to organize. Thus, the following is the
 shortest command you can provide to the script::
 
@@ -388,6 +390,19 @@ These are the steps in order followed by the ``organize_ebooks`` script when sea
    step even though they are basically zipped HTML files as explained in `epub and archives <#epub-and-archives>`_).
 5. The file is converted to ``txt`` and its text content is searched for ISBNs.
 6. If OCR is enabled (through the ``--ocr`` option), the file is OCRed and the resultant text content is searched for ISBNs.
+
+Useful commands
+---------------
+Organize ebooks with and without ISBNs::
+
+ $ organize_ebooks ~/test/test_organize/input_folder/ -o ~/test/test_organize/outut_folder/ --ofc ~/test/test_organize/corrupt/ --ofu ~/test/test_organize/uncertain/ --owi
+
+`:information_source:`
+
+- ``--ofu, --output-folder-uncertain``: this folder will contain any documents that could be identified based on non-ISBN metadata (e.g. title) 
+  from online sources (e.g. Goodreads). However this folder is only used if the flag ``--owi`` (next option explained) is used.
+ - ``--owi, --organize-without-isbn``: This flag instructs the script to fetch metadata from online sources in case no ISBN could be found in 
+   an ebook.
 
 Example: organize a collection of assorted documents
 ====================================================
