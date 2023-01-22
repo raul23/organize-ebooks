@@ -366,7 +366,7 @@ These are the steps in order followed by the ``organize_ebooks`` script when sea
 1. The first location it tries to find ISBNs is the filename. 
 2. Then it checks the contents directly if it is a text file. 
 3. The next place that is searched for ISBNs is the file metadata by calling calibre's ``ebook-meta``. 
-4. The file is decompressed with ``7z`` and the extracted files are recursively searched for ISBNs (epubs are excluded from this 
+4. The file is decompressed with ``7z`` if it is an archive and the extracted files are recursively searched for ISBNs (epubs are excluded from this 
    step even though they are basically zipped HTML files as explained in `epub and archives <#epub-and-archives>`_).
 5. The file is converted to ``txt`` and its text content is searched for ISBNs.
 6. If OCR is enabled (through the ``--ocr`` option), the file is OCRed and the resultant text content is searched for ISBNs.
