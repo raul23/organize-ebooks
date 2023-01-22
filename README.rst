@@ -530,7 +530,7 @@ Docker error: ``requested access to the resource is denied`` 😡
   Maybe on the old macOS I was not correctly authenticated (even though I got the message ``Login Succeeded``) and thus I couldn't do the ``docker push``.
 
 ``epub`` and archives
-======================
+---------------------
 When searching for ISBNs, the Python script ``organize_ebooks`` doesn't decompress *epub* files with ``7z`` because it would be a very slow
 operation since ``7z`` decompresses archives and recursively scans the contents which can be many files within an *epub* file. 
 Then you would have to search ISBNs for each of the extracted files which would increase the running time of the script.
