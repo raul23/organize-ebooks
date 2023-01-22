@@ -5,7 +5,7 @@ Automatically organize folders with potentially huge amounts of unorganized eboo
 from `ebook-tools <https://github.com/na--/ebook-tools>`_ written in shell by `na-- <https://github.com/na-->`_.
 
 This is done by renaming the files with proper names and moving them to other folders. The new names are obtained based on the ISBNs
-found in the ebook files. These ISBNs are extracted by using progressively more complex methods (from searching the filename to OCRing
+found in the ebook files. These ISBNs are extracted by using progressively more complex methods (from searching the filename to OCR-ing
 the given file) depending on the user's specified options.
 
 .. contents:: **Contents**
@@ -19,7 +19,7 @@ About
 ebooks. This is done by renaming the files with proper names and moving them to other folders.
 
 The new names are obtained based on the ISBNs found in the ebook files. These ISBNs are extracted by using progressively more complex methods (from 
-searching the filename to OCRing the given file) depending on the user's specified options (see `Most basic command <#most-basic-command>`_).
+searching the filename to OCR-ing the given file) depending on the user's specified options (see `Most basic command <#most-basic-command>`_).
 
 It is a Python port of `organize-ebooks.sh <https://github.com/na--/ebook-tools/blob/master/organize-ebooks.sh>`_ 
 from `ebook-tools <https://github.com/na--/ebook-tools>`_ written in shell by `na-- <https://github.com/na-->`_.
@@ -48,7 +48,7 @@ This is the environment on which the Python package `organize_ebooks <./organize
 * `Tesseract <https://github.com/tesseract-ocr/tesseract>`_ for running OCR on books - version 4 gives 
   better results. 
   
-  `:warning:` OCR is a slow resource-intensive process. Hence, by default only the first 7 and last 3 pages are OCRed through the option
+  `:warning:` OCR is a slow resource-intensive process. Hence, by default only the first 7 and last 3 pages are OCR-ed through the option
   ``--ocr-only-first-last-pages``. More info at `Script options <#script-options>`_.
 * `Ghostscript <https://www.ghostscript.com/>`_: ``gs`` converts *pdf* to *png* (useful for OCR)
 * `textutil <https://ss64.com/osx/textutil.html>`_ or `catdoc <http://www.wagner.pp.ru/~vitus/software/catdoc/>`_: for converting *doc* to *txt*
@@ -405,7 +405,7 @@ These are the steps in order followed by the ``organize_ebooks`` script when sea
 4. The file is decompressed with ``7z`` if it is an archive and the extracted files are recursively searched for ISBNs (epubs are excluded from this 
    step even though they are basically zipped HTML files as explained in `epub and archives <#epub-and-archives>`_).
 5. The file is converted to ``txt`` and its text content is searched for ISBNs.
-6. If OCR is enabled (through the ``--ocr`` option), the file is OCRed and the resultant text content is searched for ISBNs.
+6. If OCR is enabled (through the ``--ocr`` option), the file is OCR-ed and the resultant text content is searched for ISBNs.
 
 Useful commands
 ---------------
