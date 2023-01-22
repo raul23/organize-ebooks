@@ -383,6 +383,9 @@ def convert_to_txt(input_file, output_file, mime_type,
             and msword_convert_method in ['catdoc', 'textutil'] \
             and (command_exists('catdoc') or command_exists('textutil')):
         msg = 'The file looks like a doc, using {} to extract the text'
+        # TODO: select convert method as specified by user
+        # e.g. if convert_method = 'textutil' and 'catdoc' exists,
+        # 'catdoc' will be used
         if command_exists('catdoc'):
             logger.debug(msg.format('catdoc'))
             result = catdoc(input_file, output_file)
@@ -1286,6 +1289,7 @@ def substitute_params(hashmap, output_filename_template=OUTPUT_FILENAME_TEMPLATE
     # TODO: explain what's going on
     cmd += f'; OUTPUT_FILENAME_TEMPLATE=\'"{output_filename_template}"\'; ' \
            'eval echo "$OUTPUT_FILENAME_TEMPLATE"'
+    # In the Docker container (Ubuntu), no '/usr/local/bin/bash', only '/bin/bash'
     bin_path = '/usr/local/bin/bash' if Path('/usr/local/bin/bash').exists() else '/bin/bash'
     result = subprocess.Popen([bin_path, '-c', cmd], stdout=subprocess.PIPE)
     return result.stdout.read().decode('UTF-8').strip()
@@ -1493,7 +1497,7 @@ class OrganizeEbooks:
                                            os.path.basename(old_path))
                 logger.debug(f"Moving file '{old_path}' to '{new_path}'!")
                 ok_file(old_path, new_path)
-                move_or_link_file(old_path, new_path)
+                move_or_link_file(old_path, new_path, self.dry_run, self.symlink_only)
             else:
                 logger.debug('Output folder for pamphlet files is not set, '
                              'skipping...')
