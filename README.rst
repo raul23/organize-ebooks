@@ -364,6 +364,12 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
                                                     based on non-ISBN metadata will be moved to. (default: None)
     --ofc, --output-folder-corrupt PATH             If specified, corrupt files will be moved to this folder. (default: None)
     --ofp, --output-folder-pamphlets PATH           If specified, pamphlets will be moved to this folder. (default: None)
+    --oft, --output-filename-template TEMPLATE      This specifies how the filenames of the organized files will look. It is a bash string that is 
+                                                    evaluated so it can be very flexible (and also potentially unsafe). 
+                                                    (default: ${d[AUTHORS]// & /, } - ${d[SERIES]:+[${d[SERIES]}] - }${d[TITLE]/:/ -}
+                                                    ${d[PUBLISHED]:+ (${d[PUBLISHED]%-*})}${d[ISBN]:+[${d[ISBN]}]}.${d[EXT]})
+  --ome, --output-metadata-extension EXTENSION      If `keep-metadata` is enabled, this is the extension of the additional metadata file that is saved 
+                                                    next to each newly renamed file. (default: meta)
 
 Explaining some of the options/arguments
 ----------------------------------------
