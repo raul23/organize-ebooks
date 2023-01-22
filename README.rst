@@ -305,7 +305,7 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
     --owis, --organize-without-isbn-sources METADATA_SOURCE [METADATA_SOURCE ...]
                                                     This option allows you to specify the online metadata sources in which the script will try 
                                                     searching for books by non-ISBN metadata (i.e. author and title). The actual search is done by 
-                                                    calibre's `fetch-ebook-metadata` command- line application, so any custom calibre metadata plugins 
+                                                    calibre's `fetch-ebook-metadata` command-line application, so any custom calibre metadata plugins 
                                                     can also be used. To see the currently available options, run `fetch-ebook-metadata --help` and 
                                                     check the description for the `--allowed-plugin` option. Because Calibre versions older than 2.84 
                                                     don't support the `--allowed-plugin` option, if you want to use such an old Calibre
@@ -347,6 +347,11 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
     conversion failed (e.g. its content is empty or doesn't contain any text), then OCR is applied to the document.
   - 'true': OCR is applied to the document only if the conversion to text failed.
   - 'false': No OCR is applied after the conversion to text.
+- ``--owi, --organize-without-isbn``: if no ISBNs could be found within the document, the document can still be organized 
+  based on its author and/or title or filename by calling calibre's ``fetch-ebook-metadata`` command-line application which 
+  fetches metadata from online metadata sources (by default they are 'Goodreads', 'Google', 'Amazon.com').
+  
+  These ebooks are then saved under the user specifed uncertain folder (``--ofu, --output-folder-uncertain``).
 
 Script usage
 ============
