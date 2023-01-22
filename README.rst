@@ -230,6 +230,8 @@ To uninstall the development version of the package `organize_ebooks <./organize
 
 Script options
 ==============
+List of options
+---------------
 To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organize_ebooks.py>`_ list of options and their descriptions::
 
   $ organize_ebooks -h
@@ -349,8 +351,8 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
     --ofc, --output-folder-corrupt PATH             If specified, corrupt files will be moved to this folder. (default: None)
     --ofp, --output-folder-pamphlets PATH           If specified, pamphlets will be moved to this folder. (default: None)
 
-`:information_source:` Explaining some of the options/arguments
- 
+Explaining some of the options/arguments
+----------------------------------------
 - ``--log-level``: if it is set to the logging level ``warning``, you will only be shown on the terminal those documents that were
   skipped (e.g. the file is an image) or failed (e.g. corrupted file).
 - The choices for ``--ocr`` are {always, true, false}
