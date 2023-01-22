@@ -165,17 +165,17 @@ The `Docker image <https://hub.docker.com/repository/docker/raul23/organize/gene
    conversion to text) offered by the package ``organize_ebooks``:
 
    - Python 3.6 along with ``setuptools`` and ``wheel``
-   - p7zip
+   - p7zip: ``7z``
    - Tesseract
    - Ghostscript: ``gs``
-   - catdoc
+   - ``catdoc``
    - DjVuLibre: ``ddjvu``, ``djvused``, ``djvutxt``
    - Poppler: ``pdftotext`` and ``pdfinfo``
    - calibre: ``ebook-convert``, ``ebook-meta``, calibre's metadata plugins (Goodreads and WorldCat xISBN)
    
      The Goodreads plugin is from this mobileread's post (calibre Developer) (2022-12-23): 
      `mobileread.com <https://www.mobileread.com/forums/showpost.php?p=4283801&postcount=5>`_
-   - unzip
+   - ``unzip``
 3. The Python package ``organize_books`` is installed. You can call the corresponding script with any of the `options <#script-options>`_::
 
     user:~$ organize_ebooks /unorganized-books/
