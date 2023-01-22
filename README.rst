@@ -135,7 +135,7 @@ Installing with Docker (Recommended)
         is mounted as ``/unorganized-books`` within the Docker container.
       - ``raul23/organize:latest`` is the name of the image upon which the Docker container will be created.
 
-3. Now that you are within the Docker container, you can run the ``organize_ebooks`` script with the desired `options <#script-options>`_::
+3. Now that you are within the Docker container, you can run the Python script ``organize_ebooks`` with the desired `options <#script-options>`_::
 
     user:~$ organize_ebooks /unorganized-books/
    
