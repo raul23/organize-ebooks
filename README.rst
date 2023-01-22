@@ -144,7 +144,7 @@ Installing with Docker (Recommended)
    
    `:information_source:` 
    
-       - This basic command tells the script ``organize_ebooks`` to organize the ebooks within ``/unorganized-books/``
+       - This basic command instructs the script ``organize_ebooks`` to organize the ebooks within ``/unorganized-books/``
          and to save the renamed ebooks within the working directory which is the default location of the ``-o`` option (output folder).
        - When you log in as ``user`` (non-root) within the Docker container, your working directory is ``/ebook-tools``.
 
@@ -342,7 +342,7 @@ Script usage
 At bare minimum, the script ``organize_ebooks`` requires an input folder containing the ebooks to organize. Thus, the following is the
 shortest command you can provide to the script::
 
- $ organize ~/ebooks/input_folder/
+ $ organize_ebooks ~/ebooks/input_folder/
  
 The ebooks in the input folder will be searched for ISBNs. TODO
 
@@ -352,7 +352,7 @@ Through the script ``organize_ebooks.py``
 -----------------------------------------
 To organize a collection of documents (ebooks, pamplets) through the script ``organize_ebooks.py``::
 
- organize ~/ebooks/input_folder/ -o ~/ebooks/output_folder/ --ofp ~/ebooks/pamphlets/
+ $ organize_ebooks ~/ebooks/input_folder/ -o ~/ebooks/output_folder/ --ofp ~/ebooks/pamphlets/
  
 `:information_source:` Explaining the command
 
