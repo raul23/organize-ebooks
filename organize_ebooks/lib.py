@@ -383,9 +383,6 @@ def convert_to_txt(input_file, output_file, mime_type,
             and msword_convert_method in ['catdoc', 'textutil'] \
             and (command_exists('catdoc') or command_exists('textutil')):
         msg = 'The file looks like a doc, using {} to extract the text'
-        # TODO: select convert method as specified by user
-        # e.g. if convert_method = 'textutil' and 'catdoc' exists, 
-        # 'catdoc' will be used
         if command_exists('catdoc'):
             logger.debug(msg.format('catdoc'))
             result = catdoc(input_file, output_file)
@@ -632,13 +629,11 @@ def get_file_size(file_path, unit):
 # Using Python built-in module mimetypes
 def get_mime_type(file_path):
     try:
-        mime_type = mimetypes.guess_type(str(file_path))[0]
+        mime_type = mimetypes.guess_type(file_path)[0]
     except TypeError as e:
         logger.error(red(f"Couldn't get the mime type: {file_path}"))
         logger.exception(e)
         return ''
-    if mime_type is None and Path(file_path).suffix == '.epub':
-    	mime_type = 'application/epub+zip' 
     return mime_type if mime_type else ''
 
 
@@ -1149,8 +1144,8 @@ def search_file_for_isbns(
         logger.debug("`ebook-meta` is not found!")
 
     # Step 5: decompress with 7z
+    logger.debug('decompress with 7z')
     if not mime_type.startswith('application/epub+zip'):
-    	logger.debug('decompress with 7z')
         isbns = get_all_isbns_from_archive(file_path, **func_params)
         if isbns:
             logger.debug(f"Extracted ISBNs from the archive file:\n{isbns}")
@@ -1533,7 +1528,7 @@ class OrganizeEbooks:
             for line in ebookmeta.splitlines():
                 # TODO: remove next line if simpler version does the same thing
                 # lines.append(re.sub('^(.+[^ ]) ([ ]+):', 'OF \1 \2', line))
-                lines.append(re.sub('^(.+)( +):', 'OF \1 \2', line))
+                lines.append(re.sub(r'^(.+):', r'OF \1:', line))
             ebookmeta = '\n'.join(lines)
             with open(tmpmfile, 'a') as f:
                 f.write(more_metadata)
