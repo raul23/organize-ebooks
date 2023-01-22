@@ -384,7 +384,7 @@ Most basic command
 At bare minimum, the script ``organize_ebooks`` requires an input folder containing the ebooks to organize. Thus, the following is the
 shortest command you can provide to the script:
 
-.. code-block::
+.. code-block:: bash
 
    organize_ebooks ~/ebooks/input_folder/
  
