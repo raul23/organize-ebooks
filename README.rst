@@ -129,13 +129,17 @@ Installation instructions
   container has all the many `dependencies <#dependencies>`_ already installed along with the Python package ``organize_ebooks``. I also included the
   original bash shell scripts from `ebook-tools <https://github.com/na--/ebook-tools>`_ by `na-- <https://github.com/na-->`_..
 
-1. Pull the Docker image from hub.docker.com::
+1. Pull the Docker image from hub.docker.com:
 
-    $ docker pull raul23/organize:latest
+   .. code-block:: terminal
 
-2. Run the Docker container::
+      docker pull raul23/organize:latest
 
-   $ docker run -it -v /host/input/folder:/unorganized-books raul23/organize:latest
+2. Run the Docker container:
+
+   .. code-block:: terminal
+
+      docker run -it -v /host/input/folder:/unorganized-books raul23/organize:latest
    
    `:information_source:` 
    
@@ -204,23 +208,29 @@ Install
    version of the Python package ``organize_ebooks`` after you have installed yourself the many `dependencies <#dependencies>`_.
 
 After you have installed the `dependencies <#dependencies>`_, you can install the development (bleeding-edge) 
-version of the package `organize_ebooks <./organize_ebooks/>`_::
+version of the package `organize_ebooks <./organize_ebooks/>`_:
 
- $ pip install git+https://github.com/raul23/organize-ebooks#egg=organize-ebooks
+ .. code-block:: terminal
+ 
+    pip install git+https://github.com/raul23/organize-ebooks#egg=organize-ebooks
  
 **NOTE:** the development version has the latest features 
  
 **Test installation**
 
 1. Test your installation by importing ``organize_ebooks`` and printing its
-   version::
+   version:
+   
+   .. code-block:: terminal
 
-   $ python -c "import organize_ebooks; print(organize_ebooks.__version__)"
+      python -c "import organize_ebooks; print(organize_ebooks.__version__)"
 
 2. You can also test that you have access to the ``organize_ebooks.py`` script by
-   showing the program's version::
+   showing the program's version:
 
-   $ organize_ebooks --version
+   .. code-block:: terminal
+
+      organize_ebooks --version
 
 Uninstall
 ---------
@@ -372,9 +382,11 @@ Script usage
 Most basic command
 ------------------
 At bare minimum, the script ``organize_ebooks`` requires an input folder containing the ebooks to organize. Thus, the following is the
-shortest command you can provide to the script::
+shortest command you can provide to the script:
 
- $ organize_ebooks ~/ebooks/input_folder/
+.. code-block:: terminal
+
+   organize_ebooks ~/ebooks/input_folder/
  
 The ebooks in the input folder will be searched for ISBNs. The script tries to find ISBN numbers in the given ebook 
 file by using progressively more "expensive" tactics (as stated in `lib.sh <https://github.com/na--/ebook-tools/blob/master/lib.sh#L519>`_ 
@@ -393,9 +405,11 @@ These are the steps in order followed by the ``organize_ebooks`` script when sea
 
 Useful commands
 ---------------
-Organize ebooks with and without ISBNs::
+Organize ebooks with and without ISBNs:
 
- $ organize_ebooks ~/test/test_organize/input_folder/ -o ~/test/test_organize/outut_folder/ --ofc ~/test/test_organize/corrupt/ --ofu ~/test/test_organize/uncertain/ --owi
+.. code-block:: terminal
+
+   organize_ebooks ~/input_folder/ -o ~/outut_folder/ --ofc ~/corrupt/ --ofu ~/uncertain/ --owi
 
 `:information_source:`
 
@@ -408,9 +422,11 @@ Example: organize a collection of assorted documents
 ====================================================
 Through the script ``organize_ebooks.py``
 -----------------------------------------
-To organize a collection of documents (ebooks, pamplets) through the script ``organize_ebooks.py``::
+To organize a collection of documents (ebooks, pamplets) through the script ``organize_ebooks.py``:
 
- $ organize_ebooks ~/ebooks/input_folder/ -o ~/ebooks/output_folder/ --ofp ~/ebooks/pamphlets/
+.. code-block:: terminal
+
+   organize_ebooks ~/input_folder/ -o ~/output_folder/ --ofp ~/pamphlets/
  
 `:information_source:` Explaining the command
 
