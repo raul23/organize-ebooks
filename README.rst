@@ -145,9 +145,11 @@ Installation instructions
    
       - ``/host/input/folder`` is a directory within your OS that can contain all the ebooks to be organized and
         is mounted as ``/unorganized-books`` within the Docker container.
-      - You can use the ``-v`` option mulitple times to mount several host output folders within the container, e.g.::
+      - You can use the ``-v`` option mulitple times to mount several host output folders within the container, e.g.:
         
-        $ docker run -it -v /host/input/folder:/unorganized-books -v /host/output/folder:/output-folder raul23/organize:latest
+        .. code-block:: bash
+        
+           docker run -it -v /host/input/folder:/unorganized-books -v /host/output/folder:/output-folder raul23/organize:latest
       - ``raul23/organize:latest`` is the name of the image upon which the Docker container will be created.
 
 3. Now that you are within the Docker container, you can run the Python script ``organize_ebooks`` with the desired `options <#script-options>`_::
@@ -234,9 +236,11 @@ version of the package `organize_ebooks <./organize_ebooks/>`_:
 
 Uninstall
 ---------
-To uninstall the development version of the package `organize_ebooks <./organize_ebooks/>`_::
+To uninstall the development version of the package `organize_ebooks <./organize_ebooks/>`_:
 
- $ pip uninstall organize_ebooks
+.. code-block:: bash
+
+   pip uninstall organize_ebooks
 
 Script options
 ==============
