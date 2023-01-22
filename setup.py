@@ -8,13 +8,13 @@ from setuptools.command.build_py import build_py as build_py_orig
 
 from organize_ebooks import __version__, __test_version__
 
-if sys.version_info < (3, 6):
+if sys.version_info < (3, 6, 9):
     raise RuntimeError("""
-    organize_ebooks v0.1.0+ supports Python 3.6 and above. 
+    organize_ebooks v0.1.0+ supports Python 3.6.9 and above.
     """)
 
 excluded = []
-    
+
 
 # IMPORTANT: bdist_wheel behaves differently to sdist
 # - MANIFEST.in works for source distributions, but it's ignored for wheels,
@@ -77,7 +77,7 @@ setup(name='organize-ebooks',
       author='Raul C.',
       author_email='rchfe23@gmail.com',
       license='MIT',
-      # python_requires='>=3.6',
+      python_requires='>=3.6',
       # packages=find_packages(exclude=['tests']),
       cmdclass={'build_py': build_py},
       include_package_data=True,
