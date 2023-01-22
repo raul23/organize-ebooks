@@ -341,6 +341,21 @@ shortest command you can provide to the script::
  
 The ebooks in the input folder will be searched for ISBNs. TODO
 
+``epub`` and archives
+======================
+When searching for ISBNs, the Python script ``organize_ebooks`` doesn't decompress *epub* files with ``7z`` because it would be a very slow
+operation since ``7z`` decompresses archives and recursively scans the contents which can be many files within an *epub* file. 
+Then you would have to search ISBNs for each of the extracted files which would increase the running time of the script.
+
+Instead, *epub* files are decompressed with ``unzip -c`` which extracts files to stdout/screen and then the output is written
+in a text file. This text file is then searched for ISBNs. Hence the searching for ISBNs is quicker when applying ``unzip``
+to *epub* files than with ``7z``.
+
+Also, the reason for using ``unzip`` is to also make the conversion of epub files to text quicker and more accurate than calibre's 
+``ebook-convert``.
+
+`:information_source:` epubs are basically zipped HTML files
+
 Example: organize a collection of assorted documents
 ====================================================
 Through the script ``organize_ebooks.py``
