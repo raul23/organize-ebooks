@@ -223,7 +223,7 @@ def setup_argparser():
     usage_msg = blue(f'%(prog)s [OPTIONS] {{{name_input}}}')
     desc_msg = 'Automatically organize folders with potentially huge amounts of ' \
                'unorganized ebooks.\nThis is done by renaming the files with ' \
-               'proper names and moving them to other folders.''.\n\n' \
+               'proper names and moving them to other folders.''\n\n' \
                'This script is based on the great ebook-tools written in shell ' \
                'by na-- (See https://github.com/na--/ebook-tools).'
     parser = ArgumentParser(
