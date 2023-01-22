@@ -340,14 +340,14 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
 `:information_source:` Explaining some of the options/arguments
  
 - ``--log-level``: if it is set to the logging level ``warning``, you will only be shown on the terminal those documents that were
-skipped (e.g. the file is an image) or failed (e.g. corrupted file).
+  skipped (e.g. the file is an image) or failed (e.g. corrupted file).
 - The choices for ``--ocr`` are {always, true, false}
 
-- 'always': always use OCR first when doing text conversion. If the converson fails, then use the other simpler conversion tools (``pdftotext`` and 
-  ``djvutxt``).
-- 'true': first simpler conversion tools (``pdftotext`` and ``djvutxt``) will be used and then if a conversion method failed to convert an 
-  ebook to txt or resulted in an empty file, the OCR method will be used.
-- 'false': never use OCR, only use the other simpler conversion tools (``pdftotext`` and ``djvutxt``).
+  - 'always': always use OCR first when doing text conversion. If the converson fails, then use the other simpler conversion tools (``pdftotext`` and 
+    ``djvutxt``).
+  - 'true': first simpler conversion tools (``pdftotext`` and ``djvutxt``) will be used and then if a conversion method failed to convert an 
+    ebook to txt or resulted in an empty file, the OCR method will be used.
+  - 'false': never use OCR, only use the other simpler conversion tools (``pdftotext`` and ``djvutxt``).
 
 Script usage
 ============
