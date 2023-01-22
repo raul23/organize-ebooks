@@ -412,8 +412,8 @@ Sample output:
 
 Contents of the different folders after the organization:
 
-.. image:: ./images/output_folder.png
-   :target: ./images/output_folder.png
+.. image:: ./images/output_folder2.png
+   :target: ./images/output_folder2.png
    :align: left
    :alt: Example: output folder
 
