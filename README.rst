@@ -344,7 +344,7 @@ shortest command you can provide to the script::
 
  $ organize_ebooks ~/ebooks/input_folder/
  
-The ebooks in the input folder will be searched for ISBNs. TODO
+The ebooks in the input folder will be searched for ISBNs. 
 
 Example: organize a collection of assorted documents
 ====================================================
