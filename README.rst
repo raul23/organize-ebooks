@@ -337,6 +337,18 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
     --ofc, --output-folder-corrupt PATH             If specified, corrupt files will be moved to this folder. (default: None)
     --ofp, --output-folder-pamphlets PATH           If specified, pamphlets will be moved to this folder. (default: None)
 
+`:information_source:` Explaining some of the options/arguments
+ 
+ - ``--log-level``: if it is set to the logging level ``warning``, you will only be shown on the terminal those documents that were
+   skipped (e.g. the file is an image) or failed (e.g. corrupted file).
+ - The choices for ``--ocr`` are {always, true, false}
+ 
+   - 'always': always use OCR first when doing text conversion. If the converson fails, then use the other simpler conversion tools (``pdftotext`` and 
+     ``djvutxt``).
+   - 'true': first simpler conversion tools (``pdftotext`` and ``djvutxt``) will be used and then if a conversion method failed to convert an 
+     ebook to txt or resulted in an empty file, the OCR method will be used.
+   - 'false': never use OCR, only use the other simpler conversion tools (``pdftotext`` and ``djvutxt``).
+
 Script usage
 ============
 At bare minimum, the script ``organize_ebooks`` requires an input folder containing the ebooks to organize. Thus, the following is the
@@ -344,7 +356,17 @@ shortest command you can provide to the script::
 
  $ organize_ebooks ~/ebooks/input_folder/
  
-The ebooks in the input folder will be searched for ISBNs. 
+The ebooks in the input folder will be searched for ISBNs. The script tries to find ISBN numbers in the given ebook 
+file by using progressively more "expensive" tactics (as stated in `lib.sh <https://github.com/na--/ebook-tools/blob/master/lib.sh#L519>`_ 
+from `ebook-tools <https://github.com/na--/ebook-tools>`_). These are the steps in order (as soon as ISBNs are found, the script return them):
+
+1. The first location it tries to find ISBNs is the filename. 
+2. Then it checks the contents directly if it is a text file. 
+3. The next place that is search for ISBNs is the file metadata by calling calibre's ``ebook-meta``. 
+4. The file is decompressed with ``7z`` and the extracted files are recursively searched for ISBNs (epubs are excluded from this 
+   step even though they are basically zipped HTML files as explained in `epub and archives <#epub-and-archives>`_).
+5. The file is converted to ``txt`` and its text content is searched for ISBNs.
+6. If OCR is enabled (through the ``--ocr`` option), the file is OCRed and the resultant text content is searched for ISBNs.
 
 Example: organize a collection of assorted documents
 ====================================================
@@ -505,6 +527,37 @@ Also, the reason for using ``unzip`` is to also make the conversion of *epub* fi
 ``ebook-convert``.
 
 `:information_source:` epubs are basically zipped HTML files
+
+Conversion to text: files supported
+-----------------------------------
+These are the files that are supported for conversion to *txt* and the corresponding conversion tools used:
+
++---------------------+------------------------------+------------------------------+------------------------------+
+| Files supported     | Conversion tool #1           | Conversion tool #2           | Conversion tool #3           |
++=====================+==============================+==============================+==============================+
+| *pdf*               | ``pdftotext``                | ``ebook-convert`` (calibre)  | -                            |
++---------------------+------------------------------+------------------------------+------------------------------+
+| *djvu*              | ``djvutxt``                  | ``ebook-convert`` (calibre)  | -                            |
++---------------------+------------------------------+------------------------------+------------------------------+
+| *epub*              | ``epubtxt``                  | ``ebook-convert`` (calibre)  | -                            |
++---------------------+------------------------------+------------------------------+------------------------------+
+| *docx* (Word 2007)  | ``ebook-convert`` (calibre)  | -                            | -                            |
++---------------------+------------------------------+------------------------------+------------------------------+
+| *doc* (Word 97)     | ``textutil`` (macOS)         | ``catdoc``                   | ``ebook-convert`` (calibre)  |
++---------------------+------------------------------+------------------------------+------------------------------+
+| *rtf*               | ``ebook-convert`` (calibre)  | -                            | -                            |
++---------------------+------------------------------+------------------------------+------------------------------+
+
+`:information_source:` Some explanations about the table
+
+- ``epubtxt`` is a fancy way to say ``unzip``.
+- By default, ``ebook-convert`` (calibre) is always used as a last resort when other methods already exist since it is slower than
+  the other conversion tools.
+
+For comparison, here are the times taken to convert completely a 154-pages PDF document to *txt* for both supported conversion methods:
+
+- ``pdftotext``: 4.27s
+- ``ebook-convert`` (calibre): 80.91s 
 
 Docker error: ``requested access to the resource is denied`` 😡
 ---------------------------------------------------------------
