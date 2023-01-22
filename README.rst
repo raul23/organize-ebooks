@@ -419,17 +419,10 @@ Contents of the different folders after the organization:
 
 |
 
-.. image:: ./images/pamphlets.png
-   :target: ./images/pamphlets.png
+.. image:: ./images/pamphlets_and_uncertain.png
+   :target: ./images/pamphlets_and_uncertain.png
    :align: left
-   :alt: Example: pamphlets folder
-
-|
-
-.. image:: ./images/uncertain.png
-   :target: ./images/uncertain.png
-   :align: left
-   :alt: Example: uncertain folder
+   :alt: Example: pamphlets and uncertain folders
 
 |
 
