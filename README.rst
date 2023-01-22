@@ -344,7 +344,7 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
 - The choices for ``--ocr`` are {always, true, false}
 
   - 'always': If the converson to text was successful but no ISBNs were found, then OCR is run on the document. Also, if the
-     conversion failed (e.g. its content is empty or doesn't contain any text), then OCR is applied to the document.
+    conversion failed (e.g. its content is empty or doesn't contain any text), then OCR is applied to the document.
   - 'true': OCR is applied to the document only if the conversion to text failed.
   - 'false': No OCR is applied after the conversion to text.
 
