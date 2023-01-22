@@ -30,7 +30,7 @@ Dependencies
 .. TODO: remove '-todo' from link
 `:warning:` 
 
-   You can ignore this section and go straight to pulling the `Docker image <#installing-with-docker-recommended-todo>`_ which contains all the 
+   You can ignore this section and go straight to pulling the `Docker image <#installing-with-docker-recommended>`_ which contains all the 
    required dependencies and the Python package ``organize_ebooks`` already installed. This section is more for showing how I setup my system
    when porting the shell script `organize-ebooks.sh <https://github.com/na--/ebook-tools/blob/master/organize-ebooks.sh>`_ et al. to Python.
 
