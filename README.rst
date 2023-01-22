@@ -201,7 +201,7 @@ Install
 
    You can ignore this section and go straight to pulling the `Docker image <#installing-with-docker-recommended>`_ which contains all the 
    required dependencies and the Python package ``organize_ebooks`` already installed. This section is for installing the bleeding-edge
-   version of the Python package ``organize_ebooks` after you have installed the many `dependencies <#dependencies>`_.
+   version of the Python package ``organize_ebooks`` after you have installed the many `dependencies <#dependencies>`_.
 
 After you have installed the `dependencies <#dependencies>`_, you can install the development (bleeding-edge) 
 version of the package `organize_ebooks <./organize_ebooks/>`_::
