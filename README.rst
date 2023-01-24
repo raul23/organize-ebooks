@@ -324,6 +324,7 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
     -c, --corruption-check {check_only,true,false}  `check_only`: do not organize or rename files, just check them for corruption (ex. zero-filled 
                                                     files, corrupt archives or broken .pdf files). `true`: check corruption and organize/rename files. 
                                                     `false`: skip corruption check. This option is useful with the `output-folder-corrupt` option.
+                                                    (default: false)
     -t, --tested-archive-extensions REGEX           A regular expression that specifies which file extensions will be tested with `7z t` for 
                                                     corruption.
                                                     (default: ^(7z|bz2|chm|arj|cab|gz|tgz|gzip|zip|rar|xz|tar|epub|docx|odt|ods|cbr|cbz|maff|iso)$)
@@ -378,7 +379,22 @@ Explaining some of the options/arguments
 ----------------------------------------
 - ``--log-level``: if it is set to the logging level ``warning``, you will only be shown on the terminal those documents that were
   skipped (e.g. the file is an image) or failed (e.g. corrupted file).
+- ``--max-isbns``: especially when organizing epub files (they can contain many files since they are archives), 
+  many valid but wrong ISBNs can be found and thus the fetching of metadata from online sources might take longer than usual.
+  By limiting the number of ISBNs to check, the script can run faster by not being bogged down by testing dozens of ISBNs.
+- ``--skip-archives``: by default all archives are searched for ISBNs and this means that these files will be decompressed and
+  each extracted file will be recursively search for ISBNs. Thus you can just skip these archives (except epub documents) when
+  organizing your ebooks by using this flag.
+- ``--corruption-check``: corruption check with ``pdfinfo`` can be very sensitive by flagging some PDF files as corrupted even though
+  they can be opened without problems::
+  
+   Syntax Error: Dictionary key must be a name object
+   Syntax Error: Couldn't find trailer dictionary
+   
+  Thus by setting this option to 'false', you can skip this corruption check. By default, corruption check is enabled.
+  Also if you set it to 'check_only', corruption check will be performed only (no organization or renaming of ebooks).
 - The choices for ``--ocr`` are {always, true, false}
+  
   - 'always': If the conversion to text was successful but no ISBNs were found, then OCR is run on the document. Also, if the
     conversion failed (e.g. its content is empty or doesn't contain any text), then OCR is applied to the document.
   - 'true': OCR is applied to the document only if the conversion to text failed.
