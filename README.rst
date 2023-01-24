@@ -390,8 +390,9 @@ Explaining some of the options/arguments
    Syntax Error: Dictionary key must be a name object
    Syntax Error: Couldn't find trailer dictionary
    
-  Thus by setting this option to 'false', you can skip this corruption check. By default, corruption check is enabled.
-  Also if you set it to 'check_only', corruption check will be performed only (no organization or renaming of ebooks).
+  Thus by setting this option to 'false', you can skip any corruption check (whether by ``pdfinfo`` or ``7z``). 
+  By default, corruption check is enabled. Also if you set it to 'check_only', only corruption check will be performed, i.e.
+  no organization or renaming of ebooks will be done.
 - The choices for ``--ocr`` are {always, true, false}
   
   - 'always': If the conversion to text was successful but no ISBNs were found, then OCR is run on the document. Also, if the
