@@ -376,6 +376,9 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
 
 Explaining some of the options/arguments
 ----------------------------------------
+- ``--keep-metadata``: as stated in its description above, the metadata files that are created alongside the renamed ebook files
+  are useful for the script `interactive_organizer <https://github.com/raul23/interactive-organizer>`_ which used them for
+  various post-processing tasks such as showing the differences between the old and new filenames.
 - ``--log-level``: if it is set to the logging level ``warning``, you will only be shown on the terminal those documents that were
   skipped (e.g. the file is an image) or failed (e.g. corrupted file).
 - ``--max-isbns``: especially when organizing epub files (they can contain many files since they are archives), 
