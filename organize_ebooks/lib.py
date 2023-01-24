@@ -1180,7 +1180,7 @@ def search_file_for_isbns(
     logger.debug(f"Converting ebook to text format...")
     logger.debug(f"Temp file: {tmp_file_txt}")
 
-    # TODO: important, takes a long time for pdfs (not djvu)
+    # NOTE: important, takes a long time for pdfs (not djvu)
     result = convert_to_txt(file_path, tmp_file_txt, mime_type, **func_params)
     if result.returncode == 0:
         logger.debug('Conversion to text was successful, checking the result...')
@@ -1443,7 +1443,7 @@ class OrganizeEbooks:
             parts = []
             # TODO: check that it does the same as
             # `matches="[$(echo "$lowercase_name" | grep -oE "$PAMPHLET_EXCLUDED_FILES" | paste -sd';')]"`
-            # TODO: they are using grep -oE
+            # NOTE: they are using grep -oE
             # Ref.: https://bit.ly/2JHhlZJ
             matches = re.finditer(self.pamphlet_excluded_files, lowercase_name)
             for i, match in enumerate(matches):
@@ -1501,7 +1501,7 @@ class OrganizeEbooks:
             # TODO: check that it does the same as
             # `matches="[$(echo "$lowercase_name" |
             # grep -oE "$WITHOUT_ISBN_IGNORE" | paste -sd';')]`
-            # TODO: they are using grep -oE
+            # NOTE: they are using grep -oE
             # Ref.: https://bit.ly/2jj2Vnz
             matches = re.finditer(self.without_isbn_ignore, lowercase_name)
             for i, match in enumerate(matches):
@@ -1607,7 +1607,7 @@ class OrganizeEbooks:
                 metadata = fetch_metadata(self.organize_without_isbn_sources,
                                           options)
                 if metadata.returncode == 0:
-                    # TODO: they are writing outside the if, https://bit.ly/2Kt78kX
+                    # NOTE: they are writing outside the if, https://bit.ly/2Kt78kX
                     with open(tmpmfile, 'a') as f:
                         # TODO: do we write even if metadata can be empty?
                         f.write(metadata.stdout)
@@ -1618,7 +1618,7 @@ class OrganizeEbooks:
                 metadata = fetch_metadata(self.organize_without_isbn_sources,
                                           options)
                 if metadata.returncode == 0:
-                    # TODO: they are writing outside the if, https://bit.ly/2vZeFES
+                    # NOTE: they are writing outside the if, https://bit.ly/2vZeFES
                     with open(tmpmfile, 'a') as f:
                         # TODO: do we write even if metadata can be empty?
                         f.write(metadata.stdout)
@@ -1675,7 +1675,7 @@ class OrganizeEbooks:
                     with open(tmp_file, 'w') as f:
                         f.write(metadata)
 
-                    # TODO: is it necessary to sleep after fetching the
+                    # NOTE: is it necessary to sleep after fetching the
                     # metadata from online sources like they do? The rest of the
                     # code here is executed once fetch_metadata() is done
                     # Ref.: https://bit.ly/2vV9MfU
@@ -1742,7 +1742,7 @@ class OrganizeEbooks:
                                            file_path.name)
                 move_or_link_file(file_path, new_path, self.dry_run,
                                   self.symlink_only)
-                # TODO: do we add the meta extension directly to new_path (which
+                # NOTE: do we add the meta extension directly to new_path (which
                 # already has an extension); thus if new_path='/test/path/book.pdf'
                 # then new_metadata_path='/test/path/book.pdf.meta' or should it be
                 # new_metadata_path='/test/path/book.meta'
@@ -1769,7 +1769,7 @@ class OrganizeEbooks:
                          'organising...')
             skip_file(file_path, 'File appears OK')
         else:
-            # TODO: important, if html has ISBN it will be considered as an ebook
+            # NOTE: important, if html has ISBN it will be considered as an ebook
             # self._is_pamphlet() needs to be called before search...()
             if self.corruption_check == 'true':
                 logger.debug('File passed the corruption test, looking for ISBNs...')
@@ -1823,7 +1823,6 @@ class OrganizeEbooks:
                 files.append(fp)
         if not files:
             logger.warning(yellow(f'No ebooks found in folder: {folder_to_organize}'))
-        # TODO: important sort within glob?
         logger.debug("Files sorted {}".format("in desc" if self.reverse else "in asc"))
         files.sort(key=lambda x: x.name, reverse=self.reverse)
         logger.debug('=====================================================')
