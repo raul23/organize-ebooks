@@ -324,7 +324,7 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
     -c, --corruption-check {check_only,true,false}  `check_only`: do not organize or rename files, just check them for corruption (ex. zero-filled 
                                                     files, corrupt archives or broken .pdf files). `true`: check corruption and organize/rename files. 
                                                     `false`: skip corruption check. This option is useful with the `output-folder-corrupt` option.
-                                                    (default: false)
+                                                    (default: true)
     -t, --tested-archive-extensions REGEX           A regular expression that specifies which file extensions will be tested with `7z t` for 
                                                     corruption.
                                                     (default: ^(7z|bz2|chm|arj|cab|gz|tgz|gzip|zip|rar|xz|tar|epub|docx|odt|ods|cbr|cbz|maff|iso)$)
