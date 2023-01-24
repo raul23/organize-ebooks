@@ -19,7 +19,7 @@ About
 ebooks. This is done by renaming the files with proper names and moving them to other folders.
 
 The new names are obtained based on the ISBNs found in the ebook files. These ISBNs are extracted by using progressively more complex methods (from 
-searching the filename to OCR-ing the given file) depending on the user's specified options (see `Most basic command <#most-basic-command>`_).
+searching the filename to OCR-ing the given file) depending on the user's specified options (see `Basic command <#basic-command>`_).
 
 It is a Python port of `organize-ebooks.sh <https://github.com/na--/ebook-tools/blob/master/organize-ebooks.sh>`_ 
 from `ebook-tools <https://github.com/na--/ebook-tools>`_ written in shell by `na-- <https://github.com/na-->`_.
