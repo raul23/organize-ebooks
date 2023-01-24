@@ -382,8 +382,8 @@ Explaining some of the options/arguments
 - ``--max-isbns``: especially when organizing epub files (they can contain many files since they are archives), 
   many valid but wrong ISBNs can be found and thus the fetching of metadata from online sources might take longer than usual.
   By limiting the number of ISBNs to check, the script can run faster by not being bogged down by testing dozens of ISBNs.
-- ``--skip-archives``: by default all archives are searched for ISBNs and this means that these files will be decompressed and
-  each extracted file will be recursively search for ISBNs. Thus you can just skip these archives (except epub documents) when
+- ``--skip-archives``: by default all archives (e.g. 7z, zip) are searched for ISBNs and this means that these files will be decompressed and
+  each extracted file will be recursively searched for ISBNs. Thus you can just skip these archives (except epub documents) when
   organizing your ebooks by using this flag.
 - ``--corruption-check``: corruption check with ``pdfinfo`` can be very sensitive by flagging some PDF files as corrupted even though
   they can be opened without problems::
