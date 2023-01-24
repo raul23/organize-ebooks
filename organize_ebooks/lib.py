@@ -64,7 +64,7 @@ def get_without_isbn_ignore():
 # =====================
 
 # Misc options
-# ======================
+# ============
 DRY_RUN = False
 SYMLINK_ONLY = False
 KEEP_METADATA = False
@@ -79,7 +79,23 @@ PDF_CONVERT_METHOD = 'pdftotext'
 
 # Options related to extracting ISBNs from files and finding metadata by ISBN
 # ===========================================================================
-ISBN_REGEX = '(?<![0-9])(-?9-?7[789]-?)?((-?[0-9]-?){9}[0-9xX])(?![0-9])'
+MAX_ISBNS = 5
+# Horizontal whitespace and dash-like ASCII and Unicode characters that are
+# used for better matching of ISBNs in (badly) OCR-ed books. Gathered from:
+# - https://en.wikipedia.org/wiki/Whitespace_character
+# - https://en.wikipedia.org/wiki/Dash#Similar_Unicode_characters
+# - https://en.wikipedia.org/wiki/Dash#Common_dashes
+# From: https://github.com/na--/ebook-tools/blob/master/lib.sh#L31
+# NOTE: I need to escape the most important dash '-' because Python re doesn't recognize it if I don't
+WSD = "[\u0009|\u0020|\u00A0|\u1680|\u2000|\u2001|\u2002|\u2003|\u2004|\u2005|\u2006|\u2007|\u2008" \
+      "|\u2009|\u200A|\u202F|\u205F|\u3000|\u180E|\u200B|\u200C|\u200D|\u2060|\uFEFF|\-|\u005F|\u007E|\u00AD|\u00AF" \
+      "|\u02C9|\u02CD|\u02D7|\u02DC|\u2010|\u2011|\u2012|\u203E|\u2043|\u207B|\u208B|\u2212|\u223C|\u23AF|\u23E4" \
+      "|\u2500|\u2796|\u2E3A|\u2E3B|\u10191|\u2012|\u2013|\u2014|\u2015|\u2053" \
+      "|\u058A|\u05BE|\u1428|\u1B78|\u3161|\u30FC|\uFE63|\uFF0D|\u10110|\u1104B|\u11052|\u110BE|\u1D360]?"
+# ISBN_REGEX = '(?<![0-9])(-?9-?7[789]-?)?((-?[0-9]-?){9}[0-9xX])(?![0-9])'
+# NOTE: if I use '?+' like they do in their code, I get `error: multiple repeat at position 592`
+# Also, double accolades for 9 or they get removed by f-string
+ISBN_REGEX = f"(?<![0-9])({WSD}9{WSD}7{WSD}[789]{WSD})?(({WSD}[0-9]{WSD}){{9}}[0-9xX])(?![0-9])"
 ISBN_BLACKLIST_REGEX = '^(0123456789|([0-9xX])\\2{9})$'
 ISBN_DIRECT_FILES = '^text/(plain|xml|html)$'
 ISBN_IGNORED_FILES = '^(image/(gif|svg.+)|application/(x-shockwave-flash|CDFV2|vnd.ms-opentype|x-font-ttf|x-dosexec|' \
@@ -104,7 +120,8 @@ OCR_ONLY_FIRST_LAST_PAGES = (7, 3)
 
 # Organize options
 # ================
-CORRUPTION_CHECK_ONLY = False
+SKIP_ARCHIVES = False
+CORRUPTION_CHECK = 'true'
 ORGANIZE_WITHOUT_ISBN = False
 ORGANIZE_WITHOUT_ISBN_SOURCES = ['Goodreads', 'Google', 'Amazon.com']
 PAMPHLET_EXCLUDED_FILES = '\.(chm|epub|cbr|cbz|mobi|lit|pdb)$'
@@ -674,7 +691,10 @@ def get_pages_in_pdf(file_path, cmd='mdls'):
 
 def get_parts_from_path(path):
     path = Path(path)
-    return f'{path.anchor}'.join(path.parts[-2:])
+    anchor = path.anchor
+    if not anchor:
+        anchor = '/'
+    return f'{anchor}'.join(path.parts[-2:])
 
 
 # Checks if directory is empty
@@ -1187,7 +1207,7 @@ def search_file_for_isbns(
             else:
                 logger.debug('Did not find any ISBNs and will NOT try OCR')
     else:
-        logger.error(red('There was an error converting the book to txt format:'))
+        logger.error(red('There was an error converting the ebook to txt format:'))
         logger.error(red(result.stderr))
         try_ocr = True
 
@@ -1207,7 +1227,7 @@ def search_file_for_isbns(
             # TODO: show error!
             logger.info('There was an error while running OCR!')
 
-    logger.debug(f'Removing {tmp_file_txt}...')
+    logger.debug(f"Removing tmp file '{tmp_file_txt}'...")
     remove_file(tmp_file_txt)
 
     if isbns:
@@ -1231,9 +1251,11 @@ def search_meta_val(ebookmeta, key):
 
 
 def setup_log(quiet=False, verbose=False, logging_level=LOGGING_LEVEL,
-              logging_formatter=LOGGING_FORMATTER):
+              logging_formatter=LOGGING_FORMATTER, logger_names=None):
+    if logger_names is None:
+        logger_names = ['script', 'lib']
     if not quiet:
-        for logger_name in ['organize_script', 'organize_lib']:
+        for logger_name in logger_names:
             logger_ = logging.getLogger(logger_name)
             if verbose:
                 logger_.setLevel('DEBUG')
@@ -1289,9 +1311,10 @@ def substitute_params(hashmap, output_filename_template=OUTPUT_FILENAME_TEMPLATE
     # TODO: explain what's going on
     cmd += f'; OUTPUT_FILENAME_TEMPLATE=\'"{output_filename_template}"\'; ' \
            'eval echo "$OUTPUT_FILENAME_TEMPLATE"'
-    # In the Docker container (Ubuntu), no '/usr/local/bin/bash', only '/bin/bash'
-    bin_path = '/usr/local/bin/bash' if Path('/usr/local/bin/bash').exists() else '/bin/bash'
-    result = subprocess.Popen([bin_path, '-c', cmd], stdout=subprocess.PIPE)
+    # In the Docker container (Ubuntu), no '/usr/local/bin/bash' (macOS), only '/bin/bash'
+    # TODO: important, once tested on Ubuntu, remove next line
+    # bin_path = bash_path if Path(bash_path).exists() else '/bin/bash'
+    result = subprocess.Popen([shutil.which('bash'), '-c', cmd], stdout=subprocess.PIPE)
     return result.stdout.read().decode('UTF-8').strip()
 
 
@@ -1362,8 +1385,10 @@ class OrganizeEbooks:
         self.output_folder_corrupt = OUTPUT_FOLDER_CORRUPT
         self.output_folder_pamphlets = OUTPUT_FOLDER_PAMPHLETS
         self.output_folder_uncertain = OUTPUT_FOLDER_UNCERTAIN
-        self.corruption_check_only = CORRUPTION_CHECK_ONLY
+        self.skip_archives = SKIP_ARCHIVES
+        self.corruption_check = CORRUPTION_CHECK
         self.dry_run = DRY_RUN
+        self.max_isbns = MAX_ISBNS
         self.isbn_blacklist_regex = ISBN_BLACKLIST_REGEX
         self.isbn_direct_files = ISBN_DIRECT_FILES
         self.isbn_reorder_files = ISBN_REORDER_FILES
@@ -1557,6 +1582,7 @@ class OrganizeEbooks:
         # Equivalent to (in bash):
         # if [[ "${title//[^[:alpha:]]/}" != "" && "$title" != "unknown" ]]
         # Ref.: https://bit.ly/2HDHZGm
+        # Remove everything that is not a letters (lower or upper) and check the result
         if re.sub(r'[^A-Za-z]', '', title) != '' and title != 'unknown':
             logger.debug('There is a relatively normal-looking title, '
                          'searching for metadata...')
@@ -1624,7 +1650,10 @@ class OrganizeEbooks:
             # NOTE: If you use Calibre versions that are older than 2.84, it's
             # required to manually set the following option to an empty string.
             isbn_sources = []
-        for isbn in isbns.split(self.isbn_ret_separator):
+        for i, isbn in enumerate(isbns.split(self.isbn_ret_separator), start=1):
+            if i > self.max_isbns:
+                logger.debug(f"Only testing the first {self.max_isbns} ISBNs")
+                break
             tmp_file = tempfile.mkstemp(suffix='.txt')[1]
             logger.debug(f"Trying to fetch metadata for ISBN '{isbn}' into "
                          f"temp file '{tmp_file}'...")
@@ -1647,9 +1676,8 @@ class OrganizeEbooks:
                         f.write(metadata)
 
                     # TODO: is it necessary to sleep after fetching the
-                    # metadata from online sources like they do? The code is
-                    # run sequentially, so we are executing the rest of the
-                    # code here once fetch_metadata() is done
+                    # metadata from online sources like they do? The rest of the
+                    # code here is executed once fetch_metadata() is done
                     # Ref.: https://bit.ly/2vV9MfU
                     time.sleep(0.1)
                     logger.debug('Successfully fetched metadata')
@@ -1694,10 +1722,19 @@ class OrganizeEbooks:
                                  f'Non-ISBN organization disabled')
 
     def _organize_file(self, file_path):
-        suffix = f' [{Path(file_path).suffix}] ' if len(Path(file_path).name) > 145 else ' '
+        suffix = f' [{Path(file_path).suffix}] ' if len(Path(file_path).name) > 100 else ' '
         logger.info(f'Processing{suffix}{Path(file_path).name[:100]}...')
-        file_err = check_file_for_corruption(file_path,
-                                             self.tested_archive_extensions)
+        ext = Path(file_path).suffix[1:]  # Remove the dot from extension
+        if self.skip_archives and ext != 'epub' and re.match(self.tested_archive_extensions, ext):
+            logger.debug(f"The file has a '{ext}' extension, skipping it since it is an archive!")
+            skip_file(file_path, 'File is an archive!')
+            return 0
+        if self.corruption_check != 'false':
+            file_err = check_file_for_corruption(file_path,
+                                                 self.tested_archive_extensions)
+        else:
+            file_err = None
+            logger.debug('Skipping corruption check')
         if file_err:
             logger.debug(f"File '{file_path}' is corrupt with error: {file_err}")
             if self.output_folder_corrupt:
@@ -1727,14 +1764,17 @@ class OrganizeEbooks:
                 logger.debug('Output folder for corrupt files is not set, doing '
                              'nothing')
                 fail_file(file_path, f'File is corrupt: {file_err}')
-        elif self.corruption_check_only:
+        elif self.corruption_check == 'check_only':
             logger.debug('We are only checking for corruption, do not continue '
                          'organising...')
             skip_file(file_path, 'File appears OK')
         else:
             # TODO: important, if html has ISBN it will be considered as an ebook
             # self._is_pamphlet() needs to be called before search...()
-            logger.debug('File passed the corruption test, looking for ISBNs...')
+            if self.corruption_check == 'true':
+                logger.debug('File passed the corruption test, looking for ISBNs...')
+            else:
+                logger.debug('Looking for ISBNs...')
             isbns = search_file_for_isbns(file_path, **self.__dict__)
             if isbns:
                 logger.debug(f"Organizing '{file_path}' by ISBNs\n{isbns}")
@@ -1748,8 +1788,8 @@ class OrganizeEbooks:
                 skip_file(file_path,
                           'No ISBNs found; Non-ISBN organization disabled')
         logger.debug('=====================================================')
+        return 0
 
-    # TODO: important, do the same for others
     def _update(self, **kwargs):
         logger.debug('Updating attributes for organizer...')
         if self.output_folder != os.getcwd():
@@ -1761,8 +1801,6 @@ class OrganizeEbooks:
                 self.__setattr__(k, new_val)
 
     def organize(self, folder_to_organize, output_folder=os.getcwd(), **kwargs):
-        # TODO: important, factorize (other places, e.g. rename)
-        # TODO: important, add red color to error message (other places too)
         if folder_to_organize is None:
             logger.error(red("\nerror: the following arguments are required: folder_to_organize"))
             return 1
@@ -1773,10 +1811,9 @@ class OrganizeEbooks:
         self.output_folder = output_folder
         self._update(**kwargs)
         files = []
-        # TODO: important, other places too
         if is_dir_empty(folder_to_organize):
             logger.warning(yellow(f'Folder is empty: {folder_to_organize}'))
-        if self.corruption_check_only:
+        if self.corruption_check == 'check_only':
             logger.info('We are only checking for corruption\n')
         logger.debug(f"Recursively scanning '{folder_to_organize}' for files...")
         for fp in Path(folder_to_organize).rglob('*'):
