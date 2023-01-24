@@ -126,7 +126,7 @@ Installation instructions
 
   It is recommended to install the Python package `organize_ebooks <./organize_ebooks/>`_ with **Docker** because the Docker
   container has all the many `dependencies <#dependencies>`_ already installed along with the Python package ``organize_ebooks``. I also included the
-  original bash shell scripts from `ebook-tools <https://github.com/na--/ebook-tools>`_ by `na-- <https://github.com/na-->`_..
+  original bash shell scripts from `ebook-tools <https://github.com/na--/ebook-tools>`_ by `na-- <https://github.com/na-->`_.
 
 1. Pull the Docker image from hub.docker.com:
 
@@ -208,7 +208,7 @@ Install
    required dependencies and the Python package ``organize_ebooks`` already installed. This section is for installing the bleeding-edge
    version of the Python package ``organize_ebooks`` after you have installed yourself the many `dependencies <#dependencies>`_.
 
-After you have installed the `dependencies <#dependencies>`_, you can install the development (bleeding-edge) 
+After you have installed the `dependencies <#dependencies>`_, you can then install the development (bleeding-edge) 
 version of the package `organize_ebooks <./organize_ebooks/>`_:
 
 .. code-block:: bash
