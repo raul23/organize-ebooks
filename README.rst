@@ -379,8 +379,10 @@ Explaining some of the options/arguments
 - ``--log-level``: if it is set to the logging level ``warning``, you will only be shown on the terminal those documents that were
   skipped (e.g. the file is an image) or failed (e.g. corrupted file).
 - ``--max-isbns``: especially when organizing epub files (they can contain many files since they are archives), 
-  many valid but wrong ISBNs can be found and thus the fetching of metadata from online sources might take longer than usual.
-  By limiting the number of ISBNs to check, the script can run faster by not being bogged down by testing dozens of ISBNs.
+  many valid ISBNs can be found and thus the fetching of metadata from online sources might take longer than usual.
+  By limiting the number of ISBNs to check, the script can run faster by not being bogged down by testing lots of ISBNs. And usually it is
+  the first ISBN found that is the correct one since it appears in the very first pages of the document where is the most
+  likely place to find it (the script searches ISBNs in the first pages, then in the end, and finally in the middle of the file).
 - ``--skip-archives``: by default all archives (e.g. 7z, zip) are searched for ISBNs and this means that these files will be decompressed and
   each extracted file will be recursively searched for ISBNs. Thus you can just skip these archives (except epub documents) when
   organizing your ebooks by using this flag.
