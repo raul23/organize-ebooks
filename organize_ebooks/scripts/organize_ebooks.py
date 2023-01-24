@@ -101,22 +101,6 @@ class OptionsChecker:
                self.add_opts.count(opt_name)
 
 
-class Result:
-    def __init__(self, stdout='', stderr='', returncode=None, args=None):
-        self.stdout = stdout
-        self.stderr = stderr
-        self.returncode = returncode
-        self.args = args
-
-    def __repr__(self):
-        return self.__str__()
-
-    def __str__(self):
-        return f'stdout={str(self.stdout).strip()}, ' \
-               f'stderr={str(self.stderr).strip()}, ' \
-               f'returncode={self.returncode}, args={self.args}'
-
-
 # General options
 def add_general_options(parser, add_opts=None, remove_opts=None,
                         program_version=__version__,
@@ -223,7 +207,7 @@ def setup_argparser():
     usage_msg = blue(f'%(prog)s [OPTIONS] {{{name_input}}}')
     desc_msg = 'Automatically organize folders with potentially huge amounts of ' \
                'unorganized ebooks.\nThis is done by renaming the files with ' \
-               'proper names and moving them to other folders.''\n\n' \
+               'proper names and moving them to other folders.\n\n' \
                'This script is based on the great ebook-tools written in shell ' \
                'by na-- (See https://github.com/na--/ebook-tools).'
     parser = ArgumentParser(
@@ -268,9 +252,15 @@ def setup_argparser():
         title=yellow('Options related to extracting ISBNS from files and finding metadata by ISBN'))
     # TODO: add look-ahead and look-behind info, see https://bit.ly/2OYsY76
     find_group.add_argument(
+        '--max-isbns', dest='max_isbns', type=int,
+        metavar='NUMBER', default=lib.MAX_ISBNS,
+        help='Maximum number of ISBNs to try when fetching metadata from '
+             'online sources by ISBNs.' + get_default_message(lib.MAX_ISBNS))
+    find_group.add_argument(
         "-i", "--isbn-regex", dest='isbn_regex', default=lib.ISBN_REGEX,
         help='''This is the regular expression used to match ISBN-like
-            numbers in the supplied books.''' + get_default_message(lib.ISBN_REGEX))
+            numbers in the supplied books. Default value too complex to show. Check
+            source code.''')
     find_group.add_argument(
         "--isbn-blacklist-regex", dest='isbn_blacklist_regex', metavar='REGEX',
         default=lib.ISBN_BLACKLIST_REGEX,
@@ -349,11 +339,17 @@ def setup_argparser():
     # ================
     organize_group = parser.add_argument_group(title=yellow('Organize options'))
     organize_group.add_argument(
-        "-c", "--corruption-check-only", dest='corruption_check_only',
-        action="store_true",
-        help='Do not organize or rename files, just check them for corruption '
-             '(ex. zero-filled files, corrupt archives or broken .pdf files). '
-             'Useful with the `output-folder-corrupt` option.')
+        "--skip-archives", dest='skip_archives', action="store_true",
+        help='Skip all archives (e.g. zip, 7zip) except epubs.')
+    organize_group.add_argument(
+        "-c", "--corruption-check", dest='corruption_check',
+        # action="store_true",
+        choices=['check_only', 'true', 'false'], default=lib.CORRUPTION_CHECK,
+        help='`check_only`: do not organize or rename files, just check them for corruption '
+             '(ex. zero-filled files, corrupt archives or broken .pdf files). `true`: '
+             'check corruption and organize/rename files. `false`: skip corruption check. '
+             'This option is useful with the `output-folder-corrupt` option.'
+             + get_default_message(lib.CORRUPTION_CHECK))
     organize_group.add_argument(
         "-t", '--tested-archive-extensions', dest='tested_archive_extensions',
         metavar='REGEX', default=lib.TESTED_ARCHIVE_EXTENSIONS,
@@ -454,6 +450,19 @@ def setup_argparser():
         metavar='PATH', default=lib.OUTPUT_FOLDER_PAMPHLETS,
         help='If specified, pamphlets will be moved to this folder.'
              + get_default_message(lib.OUTPUT_FOLDER_PAMPHLETS))
+    input_output_group.add_argument(
+        '--oft', '--output-filename-template', dest='output_filename_template',
+        metavar='TEMPLATE',
+        help='''This specifies how the filenames of the organized files will
+                look. It is a bash string that is evaluated so it can be very flexible
+                (and also potentially unsafe).''' +
+             get_default_message(lib.OUTPUT_FILENAME_TEMPLATE))
+    input_output_group.add_argument(
+        '--ome', '--output-metadata-extension', dest='output_metadata_extension',
+        metavar='EXTENSION',
+        help='''If `keep-metadata` is enabled, this is the extension of the
+                additional metadata file that is saved next to each newly renamed file.'''
+             + get_default_message(lib.OUTPUT_METADATA_EXTENSION))
     return parser
 
 
@@ -471,7 +480,8 @@ def main():
         parser = setup_argparser()
         args = parser.parse_args()
         QUIET = args.quiet
-        setup_log(args.quiet, args.verbose, args.logging_level, args.logging_formatter)
+        setup_log(args.quiet, args.verbose, args.logging_level, args.logging_formatter,
+                  logger_names=['organize_script', 'organize_lib'])
         # Actions
         error = False
         args_dict = namespace_to_dict(args)
