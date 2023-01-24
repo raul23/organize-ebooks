@@ -115,9 +115,8 @@ This is the environment on which the Python package `organize_ebooks <./organize
     cmdoption-fetch-ebook-metadata-allowed-plugin>`__
     **calibre** comes with Amazon and Google sources among others
   * conversion to *txt* will work: `calibre`'s own ``ebook-convert`` tool
-    will be used
-    
-  However, accuracy and performance will be affected as explained in the list of dependencies above.
+    will be used. However, accuracy and performance will be affected as explained 
+    in the list of dependencies above.
 
 Installing with Docker (Recommended) ⭐
 =======================================
