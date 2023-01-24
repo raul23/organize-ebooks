@@ -280,6 +280,7 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
     --pdf {pdftotext,ebook-convert}                 Set the conversion method for pdf documents. (default: pdftotext)
 
   Options related to extracting ISBNS from files and finding metadata by ISBN:
+    --max-isbns NUMBER                              Maximum number of ISBNs to try when fetching metadata from online sources by ISBNs. (default: 5)
     -i, --isbn-regex ISBN_REGEX                     This is the regular expression used to match ISBN-like numbers in the supplied books. (default:
                                                     (?<![0-9])(-?9-?7[789]-?)?((-?[0-9]-?){9}[0-9xX])(?![0-9]))
     --isbn-blacklist-regex REGEX                    Any ISBNs that were matched by the ISBN_REGEX above and pass the ISBN validation algorithm are
@@ -319,8 +320,10 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
                                                     (default: 7 3)
 
   Organize options:
-    -c, --corruption-check-only                     Do not organize or rename files, just check them for corruption (ex. zero-filled files, corrupt 
-                                                    archives or broken .pdf files). Useful with the `output-folder-corrupt` option.
+    --skip-archives                                 Skip all archives (e.g. zip, 7zip) except epubs.
+    -c, --corruption-check {check_only,true,false}  `check_only`: do not organize or rename files, just check them for corruption (ex. zero-filled 
+                                                    files, corrupt archives or broken .pdf files). `true`: check corruption and organize/rename files. 
+                                                    `false`: skip corruption check. This option is useful with the `output-folder-corrupt` option.
     -t, --tested-archive-extensions REGEX           A regular expression that specifies which file extensions will be tested with `7z t` for 
                                                     corruption.
                                                     (default: ^(7z|bz2|chm|arj|cab|gz|tgz|gzip|zip|rar|xz|tar|epub|docx|odt|ods|cbr|cbz|maff|iso)$)
