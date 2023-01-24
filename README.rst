@@ -383,7 +383,7 @@ Explaining some of the options/arguments
   By limiting the number of ISBNs to check, the script can run faster by not being bogged down by testing lots of ISBNs. And usually it is
   the first ISBN found that is the correct one since it appears in the very first pages of the document which is the most
   likely place to find it (the script searches ISBNs in the first pages, then in the end, and finally in the middle of the file).
-- ``--skip-archives``: by default all archives (e.g. 7z, zip) are searched for ISBNs and this means that these files will be decompressed and
+- ``--skip-archives``: by default all archives (e.g. 7z, zip) are searched for ISBNs and this means that they will be decompressed and
   each extracted file will be recursively searched for ISBNs. Thus you can just skip these archives (except epub documents) when
   organizing your ebooks by using this flag.
 - ``--corruption-check``: corruption check with ``pdfinfo`` can be very sensitive by flagging some PDF files as corrupted even though
