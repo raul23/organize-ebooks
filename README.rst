@@ -356,7 +356,7 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
                                                     or number of pages. (default: \.(chm|epub|cbr|cbz|mobi|lit|pdb)$)
     --pamphlet-max-pdf-pages PAGES                  .pdf files that do not contain valid ISBNs and have a lower number pages than this are considered 
                                                     pamplets/non-ebook documents. (default: 50)
-    --pamphlet-max-filesize-kib SIZE                Other files that do not contain valid ISBNs and are below this size in KBs are considered 
+    --pamphlet-max-filesize-kib SIZE                Other files that do not contain valid ISBNs and are below this size in KiBs are considered 
                                                     pamplets/non-ebook documents. (default: 250)
 
   Input/Output options:
