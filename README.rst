@@ -379,7 +379,6 @@ Explaining some of the options/arguments
 - ``--log-level``: if it is set to the logging level ``warning``, you will only be shown on the terminal those documents that were
   skipped (e.g. the file is an image) or failed (e.g. corrupted file).
 - The choices for ``--ocr`` are {always, true, false}
-
   - 'always': If the conversion to text was successful but no ISBNs were found, then OCR is run on the document. Also, if the
     conversion failed (e.g. its content is empty or doesn't contain any text), then OCR is applied to the document.
   - 'true': OCR is applied to the document only if the conversion to text failed.
