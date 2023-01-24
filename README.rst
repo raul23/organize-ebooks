@@ -441,10 +441,10 @@ Organize ebooks with and without ISBNs:
 
 `:information_source:`
 
- - ``--ofu, --output-folder-uncertain``: this folder will contain any documents that could be identified based on non-ISBN metadata (e.g. title) 
+ - ``--ofu, --output-folder-uncertain``: this folder will contain any document that could be identified based on non-ISBN metadata (e.g. title) 
    from online sources (e.g. Goodreads). However this folder is only used along with the flag ``--owi`` (next option explained).
  - ``--owi, --organize-without-isbn``: This flag instructs the script to fetch metadata from online sources in case no ISBN could be found in 
-   an ebook.
+   an ebook. The filename or the author and/or title are used for fetching metadata about the book.
 
 Example: organize a collection of assorted documents
 ====================================================
