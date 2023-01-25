@@ -1129,6 +1129,7 @@ def search_file_for_isbns(
         ocr_enabled=OCR_ENABLED,
         ocr_only_first_last_pages=OCR_ONLY_FIRST_LAST_PAGES, **kwargs):
     func_params = locals().copy()
+    # NOTE: pop('file_path'), the convert_to_txt() has file_path as first parameter
     func_params.pop('file_path')
     basename = os.path.basename(file_path)
     logger.debug(f"Searching file '{basename[:100]}' for ISBN numbers...")
@@ -1386,38 +1387,60 @@ def unique_filename(folder_path, basename):
 
 class OrganizeEbooks:
     def __init__(self):
-        self.folder_to_organize = None
-        self.output_folder = os.getcwd()
-        self.output_folder_corrupt = OUTPUT_FOLDER_CORRUPT
-        self.output_folder_pamphlets = OUTPUT_FOLDER_PAMPHLETS
-        self.output_folder_uncertain = OUTPUT_FOLDER_UNCERTAIN
-        self.skip_archives = SKIP_ARCHIVES
-        self.corruption_check = CORRUPTION_CHECK
+        # ===============
+        # General options
+        # ===============
         self.dry_run = DRY_RUN
+        self.symlink_only = SYMLINK_ONLY
+        self.keep_metadata = KEEP_METADATA
+        self.reverse = REVERSE
+        # ======================
+        # Convert-to-txt options
+        # ======================
+        self.djvu_convert_method = DJVU_CONVERT_METHOD
+        self.epub_convert_method = EPUB_CONVERT_METHOD
+        self.msword_convert_method = MSWORD_CONVERT_METHOD
+        self.pdf_convert_method = PDF_CONVERT_METHOD
+        # ===========================================================================
+        # Options related to extracting ISBNS from files and finding metadata by ISBN
+        # ===========================================================================
         self.max_isbns = MAX_ISBNS
+        self.isbn_regex = ISBN_REGEX
         self.isbn_blacklist_regex = ISBN_BLACKLIST_REGEX
         self.isbn_direct_files = ISBN_DIRECT_FILES
-        self.isbn_reorder_files = ISBN_REORDER_FILES
         self.isbn_ignored_files = ISBN_IGNORED_FILES
-        self.isbn_metadata_fetch_order = ISBN_METADATA_FETCH_ORDER
-        self.isbn_regex = ISBN_REGEX
+        self.isbn_reorder_files = ISBN_REORDER_FILES
         self.isbn_ret_separator = ISBN_RET_SEPARATOR
-        self.keep_metadata = KEEP_METADATA
-        self.ocr_command = OCR_COMMAND
+        self.isbn_metadata_fetch_order = ISBN_METADATA_FETCH_ORDER
+        # ===========
+        # OCR options
+        # ===========
         self.ocr_enabled = OCR_ENABLED
         self.ocr_only_first_last_pages = OCR_ONLY_FIRST_LAST_PAGES
+        self.ocr_command = OCR_COMMAND
+        # ================
+        # Organize options
+        # ================
+        self.skip_archives = SKIP_ARCHIVES
+        self.corruption_check = CORRUPTION_CHECK
+        self.tested_archive_extensions = TESTED_ARCHIVE_EXTENSIONS
         self.organize_without_isbn = ORGANIZE_WITHOUT_ISBN
         self.organize_without_isbn_sources = ORGANIZE_WITHOUT_ISBN_SOURCES
+        self.without_isbn_ignore = WITHOUT_ISBN_IGNORE
+        self.pamphlet_included_files = PAMPHLET_INCLUDED_FILES
+        self.pamphlet_excluded_files = PAMPHLET_EXCLUDED_FILES
+        self.pamphlet_max_pdf_pages = PAMPHLET_MAX_PDF_PAGES
+        self.pamphlet_max_filesize_kib = PAMPHLET_MAX_FILESIZE_KIB
+        # ====================
+        # Input/Output options
+        # ====================
+        self.folder_to_organize = None
+        self.output_folder = os.getcwd()
+        self.output_folder_uncertain = OUTPUT_FOLDER_UNCERTAIN
+        self.output_folder_corrupt = OUTPUT_FOLDER_CORRUPT
+        self.output_folder_pamphlets = OUTPUT_FOLDER_PAMPHLETS
         self.output_filename_template = OUTPUT_FILENAME_TEMPLATE
         self.output_metadata_extension = OUTPUT_METADATA_EXTENSION
-        self.pamphlet_excluded_files = PAMPHLET_EXCLUDED_FILES
-        self.pamphlet_included_files = PAMPHLET_INCLUDED_FILES
-        self.pamphlet_max_filesize_kib = PAMPHLET_MAX_FILESIZE_KIB
-        self.pamphlet_max_pdf_pages = PAMPHLET_MAX_PDF_PAGES
-        self.reverse = REVERSE
-        self.symlink_only = SYMLINK_ONLY
-        self.tested_archive_extensions = TESTED_ARCHIVE_EXTENSIONS
-        self.without_isbn_ignore = WITHOUT_ISBN_IGNORE
 
     def _is_pamphlet(self, file_path):
         logger.debug(f"Checking whether '{file_path}' looks like a pamphlet...")
