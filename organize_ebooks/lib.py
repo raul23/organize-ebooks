@@ -472,7 +472,8 @@ def fail_file(old_path, reason, new_path=None):
     if new_path:
         new_path = get_parts_from_path(new_path)
         logger.error(second_line)
-        logger.error(red(f'TO:\t{new_path[:150]}\n'))
+        new_fp = normalize("NFKC", str(new_path))
+        logger.error(red(f'TO:\t{new_fp[:150]}\n'))
     else:
         logger.error(second_line + '\n')
 
@@ -1007,7 +1008,9 @@ def ocr_file(file_path, output_file, mime_type,
 def ok_file(old_path, new_path):
     old_path = get_parts_from_path(old_path)
     new_path = get_parts_from_path(new_path)
-    logger.info(green(f'OK:\t{old_path[:150]}\nTO:\t{new_path[:150]}\n'))
+    old_fp = normalize("NFKC", str(old_path))
+    new_fp = normalize("NFKC", str(new_path))
+    logger.info(green(f'OK:\t{old_fp[:150]}\nTO:\t{new_fp[:150]}\n'))
 
 
 def pdfinfo(file_path):
@@ -1299,8 +1302,10 @@ def skip_file(old_path, new_path):
     # TODO: https://bit.ly/2rf38f5
     old_path = get_parts_from_path(old_path)
     new_path = get_parts_from_path(new_path)
-    logger.warning(yellow(f"SKIP:\t{old_path[:150]}"))
-    logger.warning(yellow(f'REASON:\t{new_path[:150]}\n'))
+    old_fp = normalize("NFKC", str(old_path))
+    new_fp = normalize("NFKC", str(new_path))
+    logger.warning(yellow(f"SKIP:\t{old_fp[:150]}"))
+    logger.warning(yellow(f'REASON:\t{new_fp[:150]}\n'))
 
 
 def substitute_params(hashmap, output_filename_template=OUTPUT_FILENAME_TEMPLATE):
