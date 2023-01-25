@@ -1754,7 +1754,8 @@ class OrganizeEbooks:
 
     def _organize_file(self, file_path):
         suffix = f' [{Path(file_path).suffix}] ' if len(Path(file_path).name) > 100 else ' '
-        logger.info(f'Processing{suffix}{Path(file_path).name[:100]}...')
+        fp = normalize("NFKC", str(file_path))
+        logger.info(f'Processing{suffix}{fp[:100]}...')
         ext = Path(file_path).suffix[1:]  # Remove the dot from extension
         if self.skip_archives and ext != 'epub' and re.match(self.tested_archive_extensions, ext):
             logger.debug(f"The file has a '{ext}' extension, skipping it since it is an archive!")
@@ -1866,7 +1867,9 @@ class OrganizeEbooks:
         files.sort(key=lambda x: x.name, reverse=self.reverse)
         logger.debug('=====================================================')
         for fp in files:
-            fp = normalize("NFKC", str(fp))
+            # NOTE: not a good idea because then it can't find the file because its filename has been normalized
+            # e.g. Control №290-> Control No290 [FileNotFoundError]
+            # fp = normalize("NFKC", str(fp))
             self._organize_file(Path(fp))
         return 0
 
