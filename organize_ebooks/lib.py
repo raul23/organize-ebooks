@@ -25,6 +25,7 @@ from copy import copy
 from datetime import datetime
 from pathlib import Path
 from types import SimpleNamespace
+from unicodedata import normalize
 
 from organize_ebooks import __version__
 
@@ -550,6 +551,7 @@ def find_isbns(input_str, isbn_blacklist_regex=ISBN_BLACKLIST_REGEX,
                     duplicate_isbns.append(match)
         if isbns or not check_more:
             break
+        # NOTE: remove it since we are using a longer regex that covers many cases of dashes
         input_str_copy = input_str_copy.replace('–', '').replace('—', '').replace('-', '').replace('·', ''). \
             replace('.', '').replace(' ', '')
         input_str_no_newlines = input_str_copy.replace('\n', '')[:100]
@@ -1864,8 +1866,10 @@ class OrganizeEbooks:
         files.sort(key=lambda x: x.name, reverse=self.reverse)
         logger.debug('=====================================================')
         for fp in files:
-            self._organize_file(fp)
+            fp = normalize("NFKC", str(fp))
+            self._organize_file(Path(fp))
         return 0
 
 
+# TODO: fix accents
 organizer = OrganizeEbooks()
