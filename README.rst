@@ -451,7 +451,7 @@ Organize ebooks with and without ISBNs: ``--owi``
  - ``--owi, --organize-without-isbn``: This flag instructs the script to fetch metadata from online sources in case no ISBN could be found in 
    an ebook. The filename or the author and/or title are used for fetching metadata about the book.
 
-Add more information to the filename (e.g. publisher or language): ``--oft``
+Add more information to the filename (e.g. publisher or languages): ``--oft``
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 By default, this is the bash string used as template when naming ebooks::
 
