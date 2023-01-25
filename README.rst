@@ -453,7 +453,7 @@ Organize ebooks with and without ISBNs: ``--owi``
 
 Add more information to the filename (e.g. publisher or languages): ``--oft``
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-By default (see ``--oft`` option), this is the bash string used as template when naming ebooks::
+By default (see the `--oft <#list-of-options>`_ option), this is the bash string used as template when naming ebooks::
 
  ${d[AUTHORS]// & /, } - ${d[SERIES]:+[${d[SERIES]}] - }${d[TITLE]/:/ -}${d[PUBLISHED]:+ (${d[PUBLISHED]%-*})}${d[ISBN]:+ [${d[ISBN]}]}.${d[EXT]})
 
