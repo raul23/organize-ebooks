@@ -73,7 +73,7 @@ REVERSE = False
 # Convert-to-txt options
 # ======================
 DJVU_CONVERT_METHOD = 'djvutxt'
-EPUB_CONVERT_METHOD = 'ebook-convert'
+EPUB_CONVERT_METHOD = 'epubtxt'
 MSWORD_CONVERT_METHOD = 'textutil'
 PDF_CONVERT_METHOD = 'pdftotext'
 
@@ -1257,6 +1257,9 @@ def setup_log(quiet=False, verbose=False, logging_level=LOGGING_LEVEL,
               logging_formatter=LOGGING_FORMATTER, logger_names=None):
     if logger_names is None:
         logger_names = ['script', 'lib']
+    max_width = 0
+    for name in logger_names:
+        max_width = max(max_width, len(name))
     if not quiet:
         for logger_name in logger_names:
             logger_ = logging.getLogger(logger_name)
@@ -1271,7 +1274,7 @@ def setup_log(quiet=False, verbose=False, logging_level=LOGGING_LEVEL,
             # Create formatter
             if logging_formatter:
                 formatters = {
-                    'console': '%(name)-10s | %(levelname)-8s | %(message)s',
+                    'console': f'%(name)-{max_width}s | %(levelname)-8s | %(message)s',
                     # 'console': '%(asctime)s | %(levelname)-8s | %(message)s',
                     'only_msg': '%(message)s',
                     'simple': '%(levelname)-8s %(message)s',
@@ -1484,7 +1487,7 @@ class OrganizeEbooks:
             return True
         else:
             logger.debug(f"The file has a type '{mime_type}' and a large size "
-                         '({file_size_KiB} KB), does NOT look like a pamphlet')
+                         f'({file_size_KiB} KB), does NOT look like a pamphlet')
             return False
 
     def _organize_by_filename_and_meta(self, old_path, prev_reason):
@@ -1803,16 +1806,24 @@ class OrganizeEbooks:
                 logger.debug(f'{k}: {v} -> {new_val}')
                 self.__setattr__(k, new_val)
 
+    def _check_folders(self):
+        folders = [self.folder_to_organize, self.output_folder, self.output_folder_uncertain,
+                   self.output_folder_corrupt, self.output_folder_pamphlets]
+        for folder in folders:
+            if folder and not Path(folder).exists():
+                logger.error(red(f"Folder doesn't exist: {folder}"))
+                return 1
+        return 0
+
     def organize(self, folder_to_organize, output_folder=os.getcwd(), **kwargs):
         if folder_to_organize is None:
             logger.error(red("\nerror: the following arguments are required: folder_to_organize"))
             return 1
-        if not Path(folder_to_organize).exists():
-            logger.error(red(f"Input folder doesn't exist: {folder_to_organize}"))
-            return 1
         self.folder_to_organize = folder_to_organize
         self.output_folder = output_folder
         self._update(**kwargs)
+        if self._check_folders():
+            return 1
         files = []
         if is_dir_empty(folder_to_organize):
             logger.warning(yellow(f'Folder is empty: {folder_to_organize}'))
