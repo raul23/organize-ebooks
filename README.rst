@@ -319,7 +319,7 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
                                                     (default: 7 3)
 
   Organize options:
-    --skip-archives                                 Skip all archives (e.g. zip, 7zip) except epubs.
+    --skip-archives                                 Skip all archives (e.g. zip, 7z) except epubs.
     -c, --corruption-check {check_only,true,false}  `check_only`: do not organize or rename files, just check them for corruption (ex. zero-filled 
                                                     files, corrupt archives or broken .pdf files). `true`: check corruption and organize/rename files. 
                                                     `false`: skip corruption check. This option is useful with the `output-folder-corrupt` option.
