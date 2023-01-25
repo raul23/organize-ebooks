@@ -340,7 +340,7 @@ def setup_argparser():
     organize_group = parser.add_argument_group(title=yellow('Organize options'))
     organize_group.add_argument(
         "--skip-archives", dest='skip_archives', action="store_true",
-        help='Skip all archives (e.g. zip, 7zip) except epubs.')
+        help='Skip all archives (e.g. zip, 7z) except epub files.')
     organize_group.add_argument(
         "-c", "--corruption-check", dest='corruption_check',
         # action="store_true",
