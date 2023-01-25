@@ -438,8 +438,8 @@ These are the steps in order followed by the ``organize_ebooks`` script when sea
 
 Useful commands
 ---------------
-Organize ebooks with and without ISBNs:
-
+Organize ebooks with and without ISBNs: ``--owi``
+"""""""""""""""""""""""""""""""""""""""""""""""""
 .. code-block:: bash
 
    organize_ebooks ~/input_folder/ -o ~/outut_folder/ --ofc ~/corrupt/ --ofu ~/uncertain/ --owi
@@ -450,6 +450,37 @@ Organize ebooks with and without ISBNs:
    from online sources (e.g. Goodreads). However this folder is only used along with the flag ``--owi`` (next option explained).
  - ``--owi, --organize-without-isbn``: This flag instructs the script to fetch metadata from online sources in case no ISBN could be found in 
    an ebook. The filename or the author and/or title are used for fetching metadata about the book.
+
+Add more information to the filename (e.g. publisher or language): ``--oft``
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+By default, this is the bash string used as template when naming ebooks::
+
+ ${d[AUTHORS]// & /, } - ${d[SERIES]:+[${d[SERIES]}] - }${d[TITLE]/:/ -}${d[PUBLISHED]:+ (${d[PUBLISHED]%-*})}${d[ISBN]:+ [${d[ISBN]}]}.${d[EXT]})
+
+For example, it produces the following filenames::
+
+ Cory Doctorow - Little Brother (2008) [9780007288427]
+ Eric von Hippel - Democratizing Innovation (2005) [0262002744]
+ Steve Jones - Almost Like a Whale - The Origin of Species Updated (2000) [9780385409858].html
+
+If you want to add other data to the filenames such as the publisher and languages, here is how you can modify
+this bash string:
+
+.. code-block:: bash
+
+   ${d[AUTHORS]// & /, } - ${d[SERIES]:+[${d[SERIES]}] - }${d[TITLE]/: -} (${d[PUBLISHER]:+${d[PUBLISHER]}}, ${d[PUBLISHED]:+${d[PUBLISHED]%%-*}})${d[ISBN]:+ [${d[ISBN]}]}${d[LANGUAGES]:+ [${d[LANGUAGES]}]}.${d[EXT]}
+
+Here is an example of a filename that is generated based on this modified bash string::
+
+ Cory Doctorow - With a Little Help (CorDoc-Company, Limited, 2010) [9780557943050] [eng].epub
+
+This is how you would call the script ``organize_ebooks`` with this modified string (``--oft, --output-filename-template`` option):
+
+.. code-block:: bash 
+
+   organize_ebooks ~/input -o ~/output/ --oft '${d[AUTHORS]// & /, } - ${d[SERIES]:+[${d[SERIES]}] - }${d[TITLE]/: -} (${d[PUBLISHER]:+${d[PUBLISHER]}}, ${d[PUBLISHED]:+${d[PUBLISHED]%%-*}})${d[ISBN]:+ [${d[ISBN]}]}${d[LANGUAGES]:+ [${d[LANGUAGES]}]}.${d[EXT]}'
+
+`:warning:` When calling the Python script, it is important to surround the bash string within **single** quotes (not double quotes).
 
 Example: organize a collection of assorted documents
 ====================================================
