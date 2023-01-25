@@ -177,7 +177,7 @@ The `Docker image <https://hub.docker.com/repository/docker/raul23/organize/gene
 2. All the `dependencies <#dependencies>`_ (required and optional) needed for supporting all the features (e.g. OCR, document 
    conversion to text) offered by the package ``organize_ebooks``:
 
-   - Python 3.6 along with ``setuptools`` and ``wheel``
+   - Python 3.6.9 along with ``setuptools`` and ``wheel``
    - p7zip: ``7z``
    - Tesseract
    - Ghostscript: ``gs``
