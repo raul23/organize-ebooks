@@ -480,7 +480,8 @@ This is how you would call the script ``organize_ebooks`` with this modified str
 
    organize_ebooks ~/input -o ~/output/ --oft '${d[AUTHORS]// & /, } - ${d[SERIES]:+[${d[SERIES]}] - }${d[TITLE]/: -} (${d[PUBLISHER]:+${d[PUBLISHER]}}, ${d[PUBLISHED]:+${d[PUBLISHED]%%-*}})${d[ISBN]:+ [${d[ISBN]}]}${d[LANGUAGES]:+ [${d[LANGUAGES]}]}.${d[EXT]}'
 
-`:warning:` When calling the Python script, it is important to surround the bash string within **single** quotes (not double quotes).
+`:warning:` When calling the Python script, it is important to surround the bash string within **single** quotes (not double quotes or the
+string will be evaluated).
 
 Example: organize a collection of assorted documents
 ====================================================
