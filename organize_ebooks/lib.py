@@ -73,7 +73,7 @@ REVERSE = False
 # Convert-to-txt options
 # ======================
 DJVU_CONVERT_METHOD = 'djvutxt'
-EPUB_CONVERT_METHOD = 'epubtxt'
+EPUB_CONVERT_METHOD = 'ebook-convert'
 MSWORD_CONVERT_METHOD = 'textutil'
 PDF_CONVERT_METHOD = 'pdftotext'
 
@@ -318,7 +318,10 @@ def convert_bytes_binary(num, unit):
     for x in units:
         if num < 1024.0 or x == unit:
             # return "%3.1f %s" % (num, x)
-            return num
+            x = x.capitalize()
+            if x != 'Bytes':
+                x = x[:-1] + x[-1].upper()
+            return num, "%3.1f %s" % (num, x)
         num /= 1024.0
 
 
@@ -338,7 +341,7 @@ def convert_bytes_decimal(num, unit):
     for x in units:
         if num < 1000.0 or x == unit:
             # return "%3.1f %s" % (num, x)
-            return num
+            return num, "%3.1f %s" % (num, x)
         num /= 1000.0
 
 
@@ -1455,7 +1458,7 @@ class OrganizeEbooks:
         logger.debug('The file does not match the pamphlet exclude regex, '
                      'continuing...')
         mime_type = get_mime_type(file_path)
-        file_size_KiB = get_file_size(file_path, unit='KiB')
+        file_size_KiB, _ = get_file_size(file_path, unit='KiB')
         if file_size_KiB is None:
             logger.error(f'Could not get the file size (KiB) for {file_path}')
             return None
