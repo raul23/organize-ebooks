@@ -418,10 +418,10 @@ def setup_argparser():
              'number pages than this are considered pamplets/non-ebook '
              'documents.' + get_default_message(lib.PAMPHLET_MAX_PDF_PAGES))
     organize_group.add_argument(
-        '--pamphlet-max-filesize-kb', dest='pamphlet_max_filesize_kib', type=int,
+        '--pamphlet-max-filesize-kib', dest='pamphlet_max_filesize_kib', type=int,
         metavar='SIZE', default=lib.PAMPHLET_MAX_FILESIZE_KIB,
         help='Other files that do not contain valid ISBNs and are below this '
-             'size in KBs are considered pamplets/non-ebook documents.'
+             'size in KiBs are considered pamplets/non-ebook documents.'
              + get_default_message(lib.PAMPHLET_MAX_FILESIZE_KIB))
     # ====================
     # Input/Output options
