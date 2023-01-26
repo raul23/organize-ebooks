@@ -127,7 +127,7 @@ Installation instructions
   It is recommended to install the Python package `organize_ebooks <./organize_ebooks/>`_ with **Docker** because the Docker
   container has all the many `dependencies <#dependencies>`_ already installed along with the Python package ``organize_ebooks``.
 
-1. Pull the Docker image from hub.docker.com:
+1. Pull the Docker image from `hub.docker.com <https://hub.docker.com/repository/docker/raul23/organize/general>`_:
 
    .. code-block:: bash
 
