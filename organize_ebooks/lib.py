@@ -1881,5 +1881,5 @@ class OrganizeEbooks:
             self._organize_file(Path(fp))
         return 0
 
- 
+
 organizer = OrganizeEbooks()
