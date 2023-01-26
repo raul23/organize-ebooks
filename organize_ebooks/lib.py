@@ -655,6 +655,9 @@ def get_file_size(file_path, unit):
 # Using Python built-in module mimetypes
 def get_mime_type(file_path):
     try:
+        # NOTE: on Ubuntu (docker, python 3.6.9) file_path is PosixPath and they expect str
+        # On python 3.7, they don't care that file_path is PosixPath
+        file_path = str(file_path)
         mime_type = mimetypes.guess_type(file_path)[0]
     except TypeError as e:
         logger.error(red(f"Couldn't get the mime type: {file_path}"))
@@ -1878,6 +1881,5 @@ class OrganizeEbooks:
             self._organize_file(Path(fp))
         return 0
 
-
-# TODO: fix accents
+ 
 organizer = OrganizeEbooks()
