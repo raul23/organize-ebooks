@@ -125,8 +125,7 @@ Installation instructions
 `:information_source:` 
 
   It is recommended to install the Python package `organize_ebooks <./organize_ebooks/>`_ with **Docker** because the Docker
-  container has all the many `dependencies <#dependencies>`_ already installed along with the Python package ``organize_ebooks``. I also included the
-  original bash shell scripts from `ebook-tools <https://github.com/na--/ebook-tools>`_ by `na-- <https://github.com/na-->`_.
+  container has all the many `dependencies <#dependencies>`_ already installed along with the Python package ``organize_ebooks``.
 
 1. Pull the Docker image from hub.docker.com:
 
@@ -166,7 +165,7 @@ Content of the Docker image
 `:information_source:` 
  
  - The layers of the Docker image can be checked in details at the project's `Docker repo 
-   <https://hub.docker.com/layers/raul23/organize/latest/images/sha256-a4b61239c62c6834cc356dfd3736de8e9fa1b33d26a82f02bd05476328918012?context=repo>`_ where you can find the commands used in the Dockerfile for installing all the dependencies in the base OS (Ubuntu 18.04).
+   <https://hub.docker.com/layers/raul23/organize/latest/images/sha256-b7a93954ff08a59a1539a45b8811d4740ca6d5fc87fc9e37d80f206fd456f55a?context=repo>`_ where you can find the commands used in the Dockerfile for installing all the dependencies in the base OS (Ubuntu 18.04).
  - This Python-based Docker image is derived from the project `ebook-tools <https://github.com/na--/ebook-tools>`_ (shell scripts
    by `na-- <https://github.com/na-->`_) which you can find at the `Docker Hub <https://hub.docker.com/r/ebooktools/scripts/tags>`_. One of the main 
    differences being that the base OS is Ubuntu 18.04 and Debian, respectively.
@@ -192,9 +191,10 @@ The `Docker image <https://hub.docker.com/repository/docker/raul23/organize/gene
 3. The Python package ``organize_books`` is installed. You can call the corresponding script with any of the `options <#script-options>`_::
 
     user:~$ organize_ebooks /unorganized-books/
-4. The shell scripts from the project `ebook-tools <https://github.com/na--/ebook-tools>`_ by `na-- <https://github.com/na-->`_::
+4. The Python package `interactive_organizer <https://github.com/raul23/interactive-organizer>`_ is installed. 
+   You can call the corresponding script with any of the `options <https://github.com/raul23/interactive-organizer#script-s-list-of-options>`_::
 
-    convert-to-txt.sh, find-isbns.sh, interactive-organizer.sh, lib.sh, organize-ebooks.sh, rename-calibre-library.sh, split-into-folders.sh
+    user:~$ interactive_organizer /uncertain/
 5. ``user``: a user named ``user`` is created with UID 1000. ``user`` doesn't have root privileges within the Docker container. Thus
    you can't among other things install packages with ``apt-get install``.
 
