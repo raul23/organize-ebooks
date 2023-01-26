@@ -31,6 +31,8 @@ from `ebook-tools <https://github.com/na--/ebook-tools>`_ written in shell by `n
 - `ocr <https://github.com/raul23/ocr>`_: run OCR on documents (pdf, djvu, and images)
 - `split-ebooks-into-folders <https://github.com/raul23/split-ebooks-into-folders>`_: split the supplied ebook files into 
   folders with consecutive names
+- `interactive-organizer <https://github.com/raul23/interactive-organizer>`_: interactively and manually check the ebook files
+  that were organized by ``organized_ebooks``.
   
 Dependencies
 ============
