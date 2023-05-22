@@ -247,7 +247,7 @@ Script options
 ==============
 List of options
 ---------------
-To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organize_ebooks.py>`_ list of options and their descriptions::
+To display the script `organize_ebooks.py <./scripts/organize_ebooks.py>`_ list of options and their descriptions::
 
   $ organize_ebooks -h
 
@@ -277,7 +277,7 @@ To display the script `organize_ebooks.py <./find_iorganize_ebooks/scripts/organ
   Convert-to-txt options:
     --djvu {djvutxt,ebook-convert}                  Set the conversion method for djvu documents. (default: djvutxt)
     --epub {epubtxt,ebook-convert}                  Set the conversion method for epub documents. (default: epubtxt)
-    --msword {catdoc,textutil,ebook-convert}        Set the conversion method for epub documents. (default: textutil)
+    --msword {catdoc,textutil,ebook-convert}        Set the conversion method for msword documents. (default: textutil)
     --pdf {pdftotext,ebook-convert}                 Set the conversion method for pdf documents. (default: pdftotext)
 
   Options related to extracting ISBNS from files and finding metadata by ISBN:
