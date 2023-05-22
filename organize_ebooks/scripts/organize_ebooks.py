@@ -238,7 +238,7 @@ def setup_argparser():
     convert_group.add_argument(
         '--msword', dest='msword_convert_method',
         choices=['catdoc', 'textutil', 'ebook-convert'], default=lib.MSWORD_CONVERT_METHOD,
-        help='Set the conversion method for epub documents.'
+        help='Set the conversion method for msword documents.'
              + get_default_message(lib.MSWORD_CONVERT_METHOD))
     convert_group.add_argument(
         '--pdf', dest='pdf_convert_method',
