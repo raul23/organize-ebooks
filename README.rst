@@ -247,7 +247,7 @@ Script options
 ==============
 List of options
 ---------------
-To display the script `organize_ebooks.py <./scripts/organize_ebooks.py>`_ list of options and their descriptions::
+To display the script `organize_ebooks.py <./organize_ebooks/scripts/organize_ebooks.py>`_ list of options and their descriptions::
 
   $ organize_ebooks -h
 
