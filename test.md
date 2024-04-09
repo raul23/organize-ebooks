@@ -15,6 +15,29 @@ depending on the user's specified options.
 <div class="contents" depth="3" local="" backlinks="top">
 
 **Contents**
+- [organize-ebooks](#organize-ebooks)
+  * [About](#about)
+  * [Dependencies](#dependencies)
+  * [Installing with Docker (Recommended) ⭐](#installing-with-docker-recommended-)
+    + [Installation instructions](#installation-instructions)
+    + [Content of the Docker image](#content-of-the-docker-image)
+  * [Installing the development version](#installing-the-development-version)
+    + [Install](#install)
+    + [Uninstall](#uninstall)
+  * [Script options](#script-options)
+    + [List of options](#list-of-options)
+    + [Explaining some of the options/arguments](#explaining-some-of-the-optionsarguments)
+  * [Script usage](#script-usage)
+    + [Basic command](#basic-command)
+    + [Useful commands](#useful-commands)
+      - [Organize ebooks with and without ISBNs: `--owi`](#organize-ebooks-with-and-without-isbns---owi)
+  * [Example: organize a collection of assorted documents](#example-organize-a-collection-of-assorted-documents)
+    + [Through the script `organize_ebooks.py`](#through-the-script-organize_ebookspy)
+    + [Through the Python API](#through-the-python-api)
+  * [Notes](#notes)
+    + [`epub` and archives](#epub-and-archives)
+    + [Conversion to text: files supported](#conversion-to-text-files-supported)
+    + [Docker error: `requested access to the resource is denied` 😡](#docker-error-requested-access-to-the-resource-is-denied-)
 
 </div>
 
