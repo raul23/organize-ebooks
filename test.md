@@ -31,6 +31,7 @@ depending on the user's specified options.
     + [Basic command](#basic-command)
     + [Useful commands](#useful-commands)
       - [Organize ebooks with and without ISBNs: `--owi`](#organize-ebooks-with-and-without-isbns---owi)
+      - [Add more information to the filename (e.g. publisher or languages): `--oft`](#add-more-information-to-the-filename-eg-publisher-or-languages---oft)
   * [Example: organize a collection of assorted documents](#example-organize-a-collection-of-assorted-documents)
     + [Through the script `organize_ebooks.py`](#through-the-script-organize_ebookspy)
     + [Through the Python API](#through-the-python-api)
@@ -616,9 +617,7 @@ organize_ebooks ~/input_folder/ -o ~/outut_folder/ --ofc ~/corrupt/ --ofu ~/unce
 >     found in an ebook. The filename or the author and/or title are
 >     used for fetching metadata about the book.
 
-Add more information to the filename (e.g. publisher or languages):
-`--oft`
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+#### Add more information to the filename (e.g. publisher or languages): `--oft`
 By default (see the [--oft](#list-of-options) option), this is the bash
 string used as template when naming ebooks:
 
