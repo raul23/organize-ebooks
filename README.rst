@@ -8,11 +8,6 @@ This is done by renaming the files with proper names and moving them to other fo
 found in the ebook files. These ISBNs are extracted by using progressively more complex methods (from searching the filename to OCR-ing
 the given file) depending on the user's specified options.
 
-.. contents:: **Contents**
-   :depth: 3
-   :local:
-   :backlinks: top
-
 About
 =====
 `organize_ebooks.py <./organize_ebooks/scripts/organize_ebooks.py>`_ automatically organize folders with potentially huge amounts of unorganized 
